@@ -7,7 +7,7 @@ object Form1: TForm1
   ClientHeight = 439
   ClientWidth = 529
   OnCreate = FormCreate
-  LCLVersion = '2.2.2.0'
+  LCLVersion = '2.2.0.4'
   object Source1_1: TEdit
     Left = 80
     Height = 23
@@ -194,7 +194,6 @@ object Form1: TForm1
     Top = 40
     Width = 45
     Caption = 'Source 1'
-    ParentColor = False
   end
   object Label2: TLabel
     Left = 184
@@ -202,7 +201,6 @@ object Form1: TForm1
     Top = 40
     Width = 45
     Caption = 'Source 2'
-    ParentColor = False
   end
   object Button1: TButton
     Left = 322
@@ -219,7 +217,6 @@ object Form1: TForm1
     Top = 142
     Width = 61
     Caption = 'Serquent=0'
-    ParentColor = False
   end
   object Label_Counter: TLabel
     Left = 325
@@ -227,7 +224,6 @@ object Form1: TForm1
     Top = 160
     Width = 57
     Caption = 'Counter=0'
-    ParentColor = False
   end
   object Label_AvgSource1: TLabel
     Left = 288
@@ -235,7 +231,6 @@ object Form1: TForm1
     Top = 200
     Width = 77
     Caption = 'AvgSource1=0'
-    ParentColor = False
   end
   object Label_AvgSource2: TLabel
     Left = 392
@@ -243,7 +238,6 @@ object Form1: TForm1
     Top = 200
     Width = 77
     Caption = 'AvgSource2=0'
-    ParentColor = False
   end
   object Timer1: TTimer
     Enabled = False
