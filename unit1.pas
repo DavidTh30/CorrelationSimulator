@@ -83,8 +83,9 @@ procedure TForm1.FormCreate(Sender: TObject);
 var
   i:integer;
   TotalBase:integer;
-  TotalTargetSource:integer;
-  Finlish_:boolean;
+  //TotalTargetSource:integer;
+  //Finlish_:boolean;
+  Gain_:integer;
 
 begin
   Randomize();
@@ -105,30 +106,38 @@ begin
    TotalBase:=TotalBase+Base_[i];
   end;
 
-  Finlish_:=false;
-  while Finlish_=false do
+  Gain_:=0;
+  for i:=0 to 9 do
   begin
-    TotalTargetSource:=0;
-    for i:=0 to 9 do
-    begin
-     TargetSource1[i]:=random(101);
-     TotalTargetSource:=TotalTargetSource+TargetSource1[i];
-    end;
-    if(TotalTargetSource>TotalBase+30)then Finlish_:=true;
+    Gain_:=Gain_+9;
+    TargetSource1[i]:=Round((((100-Base_[i])/100)*Gain_)+Base_[i]);
+    TargetSource2[i]:=Round(Base_[i]-(((Base_[i]-0)/100)*Gain_));
   end;
+
+  //Finlish_:=false;
+  //while Finlish_=false do
+  //begin
+  //  TotalTargetSource:=0;
+  //  for i:=0 to 9 do
+  //  begin
+  //   TargetSource1[i]:=random(101);
+  //   TotalTargetSource:=TotalTargetSource+TargetSource1[i];
+  //  end;
+  //  if(TotalTargetSource>TotalBase+30)then Finlish_:=true;
+  //end;
   //showmessage(TotalTargetSource.ToString+'>'+TotalBase.ToString);
 
-  Finlish_:=false;
-  while Finlish_=false do
-  begin
-    TotalTargetSource:=0;
-    for i:=0 to 9 do
-    begin
-     TargetSource2[i]:=random(101);
-     TotalTargetSource:=TotalTargetSource+TargetSource2[i];
-    end;
-    if(TotalTargetSource<TotalBase-30)then Finlish_:=true;
-  end;
+  //Finlish_:=false;
+  //while Finlish_=false do
+  //begin
+  //  TotalTargetSource:=0;
+  //  for i:=0 to 9 do
+  //  begin
+  //   TargetSource2[i]:=random(101);
+  //   TotalTargetSource:=TotalTargetSource+TargetSource2[i];
+  //  end;
+  //  if(TotalTargetSource<TotalBase-30)then Finlish_:=true;
+  //end;
   //showmessage(TotalTargetSource.ToString+'<'+TotalBase.ToString);
 
   CurrentSource1[0]:=Base_[0];
