@@ -1,8 +1,255 @@
 object Form1: TForm1
-  Left = 368
-  Height = 240
-  Top = 126
-  Width = 320
+  Left = 341
+  Height = 439
+  Top = 69
+  Width = 529
   Caption = 'CorrelationSimulator'
+  ClientHeight = 439
+  ClientWidth = 529
+  OnCreate = FormCreate
   LCLVersion = '2.2.2.0'
+  object Source1_1: TEdit
+    Left = 80
+    Height = 23
+    Top = 72
+    Width = 69
+    Alignment = taCenter
+    ReadOnly = True
+    TabOrder = 0
+  end
+  object Source1_2: TEdit
+    Left = 80
+    Height = 23
+    Top = 100
+    Width = 69
+    Alignment = taCenter
+    ReadOnly = True
+    TabOrder = 1
+  end
+  object Source1_3: TEdit
+    Left = 80
+    Height = 23
+    Top = 128
+    Width = 69
+    Alignment = taCenter
+    ReadOnly = True
+    TabOrder = 2
+  end
+  object Source1_4: TEdit
+    Left = 80
+    Height = 23
+    Top = 156
+    Width = 69
+    Alignment = taCenter
+    ReadOnly = True
+    TabOrder = 3
+  end
+  object Source1_5: TEdit
+    Left = 80
+    Height = 23
+    Top = 184
+    Width = 69
+    Alignment = taCenter
+    ReadOnly = True
+    TabOrder = 4
+  end
+  object Source1_6: TEdit
+    Left = 80
+    Height = 23
+    Top = 216
+    Width = 69
+    Alignment = taCenter
+    ReadOnly = True
+    TabOrder = 5
+  end
+  object Source1_7: TEdit
+    Left = 80
+    Height = 23
+    Top = 248
+    Width = 69
+    Alignment = taCenter
+    ReadOnly = True
+    TabOrder = 6
+  end
+  object Source1_8: TEdit
+    Left = 80
+    Height = 23
+    Top = 280
+    Width = 69
+    Alignment = taCenter
+    ReadOnly = True
+    TabOrder = 7
+  end
+  object Source1_9: TEdit
+    Left = 80
+    Height = 23
+    Top = 312
+    Width = 69
+    Alignment = taCenter
+    ReadOnly = True
+    TabOrder = 8
+  end
+  object Source1_10: TEdit
+    Left = 80
+    Height = 23
+    Top = 344
+    Width = 69
+    Alignment = taCenter
+    ReadOnly = True
+    TabOrder = 9
+  end
+  object Source2_1: TEdit
+    Left = 176
+    Height = 23
+    Top = 72
+    Width = 69
+    Alignment = taCenter
+    ReadOnly = True
+    TabOrder = 10
+  end
+  object Source2_2: TEdit
+    Left = 176
+    Height = 23
+    Top = 100
+    Width = 69
+    Alignment = taCenter
+    ReadOnly = True
+    TabOrder = 11
+  end
+  object Source2_3: TEdit
+    Left = 176
+    Height = 23
+    Top = 128
+    Width = 69
+    Alignment = taCenter
+    ReadOnly = True
+    TabOrder = 12
+  end
+  object Source2_4: TEdit
+    Left = 176
+    Height = 23
+    Top = 156
+    Width = 69
+    Alignment = taCenter
+    ReadOnly = True
+    TabOrder = 13
+  end
+  object Source2_5: TEdit
+    Left = 176
+    Height = 23
+    Top = 184
+    Width = 69
+    Alignment = taCenter
+    ReadOnly = True
+    TabOrder = 14
+  end
+  object Source2_6: TEdit
+    Left = 176
+    Height = 23
+    Top = 216
+    Width = 69
+    Alignment = taCenter
+    ReadOnly = True
+    TabOrder = 15
+  end
+  object Source2_7: TEdit
+    Left = 176
+    Height = 23
+    Top = 248
+    Width = 69
+    Alignment = taCenter
+    ReadOnly = True
+    TabOrder = 16
+  end
+  object Source2_8: TEdit
+    Left = 176
+    Height = 23
+    Top = 280
+    Width = 69
+    Alignment = taCenter
+    ReadOnly = True
+    TabOrder = 17
+  end
+  object Source2_9: TEdit
+    Left = 176
+    Height = 23
+    Top = 312
+    Width = 69
+    Alignment = taCenter
+    ReadOnly = True
+    TabOrder = 18
+  end
+  object Source2_10: TEdit
+    Left = 176
+    Height = 23
+    Top = 344
+    Width = 69
+    Alignment = taCenter
+    ReadOnly = True
+    TabOrder = 19
+  end
+  object Label1: TLabel
+    Left = 96
+    Height = 15
+    Top = 40
+    Width = 45
+    Caption = 'Source 1'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 184
+    Height = 15
+    Top = 40
+    Width = 45
+    Caption = 'Source 2'
+    ParentColor = False
+  end
+  object Button1: TButton
+    Left = 322
+    Height = 32
+    Top = 80
+    Width = 83
+    Caption = 'Start'
+    OnClick = Button1Click
+    TabOrder = 20
+  end
+  object Label_Serquent: TLabel
+    Left = 325
+    Height = 15
+    Top = 142
+    Width = 61
+    Caption = 'Serquent=0'
+    ParentColor = False
+  end
+  object Label_Counter: TLabel
+    Left = 325
+    Height = 15
+    Top = 160
+    Width = 57
+    Caption = 'Counter=0'
+    ParentColor = False
+  end
+  object Label_AvgSource1: TLabel
+    Left = 288
+    Height = 15
+    Top = 200
+    Width = 77
+    Caption = 'AvgSource1=0'
+    ParentColor = False
+  end
+  object Label_AvgSource2: TLabel
+    Left = 392
+    Height = 15
+    Top = 200
+    Width = 77
+    Caption = 'AvgSource2=0'
+    ParentColor = False
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 100
+    OnTimer = Timer1Timer
+    Left = 328
+    Top = 33
+  end
 end
