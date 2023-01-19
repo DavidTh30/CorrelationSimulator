@@ -14,16 +14,19 @@ type
 
   TForm1 = class(TForm)
     Button1: TButton;
-    Button2: TButton;
     Chart2LineSeries1: TLineSeries;
     Chart6: TChart;
+    Chart6LineSeries1: TLineSeries;
+    Chart6LineSeries2: TLineSeries;
     Label1: TLabel;
     Label2: TLabel;
     Label_Serquent: TLabel;
     Label_Counter: TLabel;
     Label_AvgSource1: TLabel;
     Label_AvgSource2: TLabel;
-    lcsDerivative4: TListChartSource;
+    _Source1_: TListChartSource;
+    _Base_: TListChartSource;
+    _Source2_: TListChartSource;
     PageControl1: TPageControl;
     Source1_1: TEdit;
     Source1_10: TEdit;
@@ -49,7 +52,6 @@ type
     TabSheet2: TTabSheet;
     Timer1: TTimer;
     procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure DisplayStatus();
@@ -170,7 +172,19 @@ begin
   CurrentSource2[7]:=Base_[7];
   CurrentSource2[8]:=Base_[8];
   CurrentSource2[9]:=Base_[9];
+
+  _Source1_.Clear;
+  _Base_.Clear;
+  _Source2_.Clear;
+  for i:=0 to 9 do
+  begin
+    _Source1_.Add(i,Base_[i] );
+    _Base_.Add(i,Base_[i] );
+    _Source2_.Add(i,Base_[i] );
+  end;
   DisplayStatus();
+  //Chart6.LeftAxis.Range.UseMax:=True;
+  //Chart6.LeftAxis.Range.UseMin:=True;
 end;
 
 procedure TForm1.Timer1Timer(Sender: TObject);
@@ -339,38 +353,6 @@ begin
   if Not Timer1.Enabled then Button1.Caption:='Start';
 end;
 
-procedure TForm1.Button2Click(Sender: TObject);
-var
-  i:integer;
-begin
-  //lcsDerivative5.Clear;
-  //lcsDerivative5.Add(Simulate,Chart6.LeftAxis.Range.Min);
-  //lcsDerivative5.Add(Simulate,Chart6.LeftAxis.Range.Max);
-
-  //lcsDerivative5.SetyValue(0,Chart6.LeftAxis.Range.Min);
-  //lcsDerivative5.SetyValue(1,Chart6.LeftAxis.Range.Max);
-  //lcsDerivative5.SetxValue(0,Simulate);
-  //lcsDerivative5.SetxValue(1,Simulate);
-
-  lcsDerivative4.Clear;
-
-  //lcsDerivative4.Add(1,10);
-  //lcsDerivative4.Add(2,20);
-  //lcsDerivative4.Add(3,30);
-  //Chart6.LeftAxis.Range.UseMax:=True;
-  //Chart6.LeftAxis.Range.UseMin:=True;
-
-  for i:=0 to 9 do
-  begin
-    lcsDerivative4.Add(i,Base_[i] );
-    lcsDerivative4.SetXValue(0,0);
-    lcsDerivative4.SetYValue(0,0);
-    //Base_
-    //TargetSource1
-    //TargetSource2
-  end;
-end;
-
 procedure TForm1.DisplayStatus();
 var
   i: integer;
@@ -416,6 +398,16 @@ begin
   Source2_8.Caption:=CurrentSource2[7].ToString;
   Source2_9.Caption:=CurrentSource2[8].ToString;
   Source2_10.Caption:=CurrentSource2[9].ToString;
+
+  for i:=0 to 9 do
+  begin
+    _Source1_.SetXValue(i,i);
+    _Source1_.SetYValue(i,CurrentSource1[i]);
+    //_Base_.SetXValue(i,i);
+    //_Base_.SetYValue(i,Base_[i]);
+    _Source2_.SetXValue(i,i);
+    _Source2_.SetYValue(i,CurrentSource2[i]);
+  end;
 end;
 
 procedure TForm1.Source1_Up_To_TargetSource1(Loop_: integer);
