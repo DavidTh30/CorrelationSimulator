@@ -1,254 +1,256 @@
 object Form1: TForm1
-  Left = 542
-  Height = 570
-  Top = 177
-  Width = 1109
+  Left = 466
+  Height = 543
+  Top = 127
+  Width = 867
   Caption = 'CorrelationSimulator'
-  ClientHeight = 570
-  ClientWidth = 1109
+  ClientHeight = 543
+  ClientWidth = 867
   OnCreate = FormCreate
   LCLVersion = '2.2.0.4'
-  object Source1_1: TEdit
-    Left = 80
-    Height = 23
-    Top = 72
-    Width = 69
-    Alignment = taCenter
-    ReadOnly = True
-    TabOrder = 0
-  end
-  object Source1_2: TEdit
-    Left = 80
-    Height = 23
-    Top = 100
-    Width = 69
-    Alignment = taCenter
-    ReadOnly = True
-    TabOrder = 1
-  end
-  object Source1_3: TEdit
-    Left = 80
-    Height = 23
-    Top = 128
-    Width = 69
-    Alignment = taCenter
-    ReadOnly = True
-    TabOrder = 2
-  end
-  object Source1_4: TEdit
-    Left = 80
-    Height = 23
-    Top = 156
-    Width = 69
-    Alignment = taCenter
-    ReadOnly = True
-    TabOrder = 3
-  end
-  object Source1_5: TEdit
-    Left = 80
-    Height = 23
-    Top = 184
-    Width = 69
-    Alignment = taCenter
-    ReadOnly = True
-    TabOrder = 4
-  end
-  object Source1_6: TEdit
-    Left = 80
-    Height = 23
-    Top = 216
-    Width = 69
-    Alignment = taCenter
-    ReadOnly = True
-    TabOrder = 5
-  end
-  object Source1_7: TEdit
-    Left = 80
-    Height = 23
-    Top = 248
-    Width = 69
-    Alignment = taCenter
-    ReadOnly = True
-    TabOrder = 6
-  end
-  object Source1_8: TEdit
-    Left = 80
-    Height = 23
-    Top = 280
-    Width = 69
-    Alignment = taCenter
-    ReadOnly = True
-    TabOrder = 7
-  end
-  object Source1_9: TEdit
-    Left = 80
-    Height = 23
-    Top = 312
-    Width = 69
-    Alignment = taCenter
-    ReadOnly = True
-    TabOrder = 8
-  end
-  object Source1_10: TEdit
-    Left = 80
-    Height = 23
-    Top = 344
-    Width = 69
-    Alignment = taCenter
-    ReadOnly = True
-    TabOrder = 9
-  end
-  object Source2_1: TEdit
-    Left = 176
-    Height = 23
-    Top = 72
-    Width = 69
-    Alignment = taCenter
-    ReadOnly = True
-    TabOrder = 10
-  end
-  object Source2_2: TEdit
-    Left = 176
-    Height = 23
-    Top = 100
-    Width = 69
-    Alignment = taCenter
-    ReadOnly = True
-    TabOrder = 11
-  end
-  object Source2_3: TEdit
-    Left = 176
-    Height = 23
-    Top = 128
-    Width = 69
-    Alignment = taCenter
-    ReadOnly = True
-    TabOrder = 12
-  end
-  object Source2_4: TEdit
-    Left = 176
-    Height = 23
-    Top = 156
-    Width = 69
-    Alignment = taCenter
-    ReadOnly = True
-    TabOrder = 13
-  end
-  object Source2_5: TEdit
-    Left = 176
-    Height = 23
-    Top = 184
-    Width = 69
-    Alignment = taCenter
-    ReadOnly = True
-    TabOrder = 14
-  end
-  object Source2_6: TEdit
-    Left = 176
-    Height = 23
-    Top = 216
-    Width = 69
-    Alignment = taCenter
-    ReadOnly = True
-    TabOrder = 15
-  end
-  object Source2_7: TEdit
-    Left = 176
-    Height = 23
-    Top = 248
-    Width = 69
-    Alignment = taCenter
-    ReadOnly = True
-    TabOrder = 16
-  end
-  object Source2_8: TEdit
-    Left = 176
-    Height = 23
-    Top = 280
-    Width = 69
-    Alignment = taCenter
-    ReadOnly = True
-    TabOrder = 17
-  end
-  object Source2_9: TEdit
-    Left = 176
-    Height = 23
-    Top = 312
-    Width = 69
-    Alignment = taCenter
-    ReadOnly = True
-    TabOrder = 18
-  end
-  object Source2_10: TEdit
-    Left = 176
-    Height = 23
-    Top = 344
-    Width = 69
-    Alignment = taCenter
-    ReadOnly = True
-    TabOrder = 19
-  end
-  object Label1: TLabel
-    Left = 96
-    Height = 15
-    Top = 40
-    Width = 45
-    Caption = 'Source 1'
-  end
-  object Label2: TLabel
-    Left = 184
-    Height = 15
-    Top = 40
-    Width = 45
-    Caption = 'Source 2'
-  end
   object Button1: TButton
-    Left = 322
+    Left = 560
     Height = 32
-    Top = 80
+    Top = 40
     Width = 83
     Caption = 'Start'
     OnClick = Button1Click
-    TabOrder = 20
+    TabOrder = 0
   end
   object Label_Serquent: TLabel
-    Left = 325
+    Left = 565
     Height = 15
-    Top = 142
+    Top = 94
     Width = 61
     Caption = 'Serquent=0'
   end
   object Label_Counter: TLabel
-    Left = 325
+    Left = 565
     Height = 15
-    Top = 160
+    Top = 112
     Width = 57
     Caption = 'Counter=0'
   end
   object Label_AvgSource1: TLabel
-    Left = 288
+    Left = 560
     Height = 15
-    Top = 200
+    Top = 144
     Width = 77
     Caption = 'AvgSource1=0'
   end
   object Label_AvgSource2: TLabel
-    Left = 288
+    Left = 560
     Height = 15
-    Top = 240
+    Top = 168
     Width = 77
     Caption = 'AvgSource2=0'
   end
   object PageControl1: TPageControl
-    Left = 488
+    Left = 8
     Height = 520
     Top = 8
     Width = 528
     ActivePage = TabSheet2
     TabIndex = 1
-    TabOrder = 21
+    TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = 'TabSheet1'
+      ClientHeight = 492
+      ClientWidth = 520
+      object Label2: TLabel
+        Left = 144
+        Height = 15
+        Top = 16
+        Width = 45
+        Caption = 'Source 2'
+      end
+      object Source1_1: TEdit
+        Left = 40
+        Height = 23
+        Top = 48
+        Width = 69
+        Alignment = taCenter
+        ReadOnly = True
+        TabOrder = 0
+      end
+      object Source1_2: TEdit
+        Left = 40
+        Height = 23
+        Top = 76
+        Width = 69
+        Alignment = taCenter
+        ReadOnly = True
+        TabOrder = 1
+      end
+      object Source1_3: TEdit
+        Left = 40
+        Height = 23
+        Top = 104
+        Width = 69
+        Alignment = taCenter
+        ReadOnly = True
+        TabOrder = 2
+      end
+      object Source1_4: TEdit
+        Left = 40
+        Height = 23
+        Top = 132
+        Width = 69
+        Alignment = taCenter
+        ReadOnly = True
+        TabOrder = 3
+      end
+      object Source1_5: TEdit
+        Left = 40
+        Height = 23
+        Top = 160
+        Width = 69
+        Alignment = taCenter
+        ReadOnly = True
+        TabOrder = 4
+      end
+      object Source1_6: TEdit
+        Left = 40
+        Height = 23
+        Top = 192
+        Width = 69
+        Alignment = taCenter
+        ReadOnly = True
+        TabOrder = 5
+      end
+      object Source1_7: TEdit
+        Left = 40
+        Height = 23
+        Top = 224
+        Width = 69
+        Alignment = taCenter
+        ReadOnly = True
+        TabOrder = 6
+      end
+      object Source1_8: TEdit
+        Left = 40
+        Height = 23
+        Top = 256
+        Width = 69
+        Alignment = taCenter
+        ReadOnly = True
+        TabOrder = 7
+      end
+      object Source1_9: TEdit
+        Left = 40
+        Height = 23
+        Top = 288
+        Width = 69
+        Alignment = taCenter
+        ReadOnly = True
+        TabOrder = 8
+      end
+      object Source1_10: TEdit
+        Left = 40
+        Height = 23
+        Top = 320
+        Width = 69
+        Alignment = taCenter
+        ReadOnly = True
+        TabOrder = 9
+      end
+      object Source2_1: TEdit
+        Left = 136
+        Height = 23
+        Top = 48
+        Width = 69
+        Alignment = taCenter
+        ReadOnly = True
+        TabOrder = 10
+      end
+      object Source2_2: TEdit
+        Left = 136
+        Height = 23
+        Top = 76
+        Width = 69
+        Alignment = taCenter
+        ReadOnly = True
+        TabOrder = 11
+      end
+      object Source2_3: TEdit
+        Left = 136
+        Height = 23
+        Top = 104
+        Width = 69
+        Alignment = taCenter
+        ReadOnly = True
+        TabOrder = 12
+      end
+      object Source2_4: TEdit
+        Left = 136
+        Height = 23
+        Top = 132
+        Width = 69
+        Alignment = taCenter
+        ReadOnly = True
+        TabOrder = 13
+      end
+      object Source2_5: TEdit
+        Left = 136
+        Height = 23
+        Top = 160
+        Width = 69
+        Alignment = taCenter
+        ReadOnly = True
+        TabOrder = 14
+      end
+      object Source2_6: TEdit
+        Left = 136
+        Height = 23
+        Top = 192
+        Width = 69
+        Alignment = taCenter
+        ReadOnly = True
+        TabOrder = 15
+      end
+      object Source2_7: TEdit
+        Left = 136
+        Height = 23
+        Top = 224
+        Width = 69
+        Alignment = taCenter
+        ReadOnly = True
+        TabOrder = 16
+      end
+      object Source2_8: TEdit
+        Left = 136
+        Height = 23
+        Top = 256
+        Width = 69
+        Alignment = taCenter
+        ReadOnly = True
+        TabOrder = 17
+      end
+      object Source2_9: TEdit
+        Left = 136
+        Height = 23
+        Top = 288
+        Width = 69
+        Alignment = taCenter
+        ReadOnly = True
+        TabOrder = 18
+      end
+      object Source2_10: TEdit
+        Left = 136
+        Height = 23
+        Top = 320
+        Width = 69
+        Alignment = taCenter
+        ReadOnly = True
+        TabOrder = 19
+      end
+      object Label1: TLabel
+        Left = 56
+        Height = 15
+        Top = 16
+        Width = 45
+        Caption = 'Source 1'
+      end
     end
     object TabSheet2: TTabSheet
       Caption = 'TabSheet2'
@@ -326,35 +328,119 @@ object Form1: TForm1
       end
     end
   end
+  object Label_CloseOrderPriceSource1: TLabel
+    Left = 560
+    Height = 15
+    Top = 196
+    Width = 141
+    Caption = 'CloseOrderPriceSource1=0'
+  end
+  object Label_CloseOrderPriceSource2: TLabel
+    Left = 560
+    Height = 15
+    Top = 216
+    Width = 141
+    Caption = 'CloseOrderPriceSource2=0'
+  end
+  object Label_Dif_Source1_AvgSource1: TLabel
+    Left = 560
+    Height = 15
+    Top = 240
+    Width = 124
+    Caption = 'Source1-AvgSource1=0'
+  end
+  object Label_Dif_Source2_AvgSource2: TLabel
+    Left = 560
+    Height = 15
+    Top = 256
+    Width = 124
+    Caption = 'Source2-AvgSource2=0'
+  end
+  object Label_U: TLabel
+    Left = 560
+    Height = 15
+    Top = 296
+    Width = 22
+    Caption = 'U=0'
+  end
+  object Label_I1: TLabel
+    Left = 560
+    Height = 15
+    Top = 328
+    Width = 23
+    Caption = 'I1=0'
+  end
+  object Label_S1: TLabel
+    Left = 560
+    Height = 15
+    Top = 360
+    Width = 26
+    Caption = 'S1=0'
+  end
+  object Label_Correlation_: TLabel
+    Left = 560
+    Height = 15
+    Top = 376
+    Width = 153
+    Caption = 'Correlation=U / Sqrt( I1 * S1 )'
+  end
+  object Label_U_: TLabel
+    Left = 560
+    Height = 15
+    Top = 280
+    Width = 257
+    Caption = 'U=(Source1-AvgSource1)*(Source2-AvgSource2)'
+  end
+  object Label_I1_: TLabel
+    Left = 560
+    Height = 15
+    Top = 312
+    Width = 158
+    Caption = 'I1=CloseOrderPriceSource1^2'
+  end
+  object Label_S1_: TLabel
+    Left = 560
+    Height = 15
+    Top = 344
+    Width = 161
+    Caption = 'S1=CloseOrderPriceSource2^2'
+  end
+  object Label_Correlation: TLabel
+    Left = 560
+    Height = 15
+    Top = 392
+    Width = 73
+    Caption = 'Correlation=0'
+  end
   object Timer1: TTimer
     Enabled = False
     Interval = 100
     OnTimer = Timer1Timer
-    Left = 328
-    Top = 33
+    Left = 496
+    Top = 16
   end
   object _Source1_: TListChartSource
     DataPoints.Strings = (
       '0|0|?|'
       '1|1|?|'
     )
-    Left = 432
-    Top = 24
+    Left = 448
+    Top = 16
   end
   object _Base_: TListChartSource
     DataPoints.Strings = (
       '0|0|?|'
       '1|1|?|'
     )
-    Left = 432
-    Top = 24
+    Left = 448
+    Top = 16
   end
   object _Source2_: TListChartSource
     DataPoints.Strings = (
       '0|0|?|'
       '1|1|?|'
     )
-    Left = 432
-    Top = 24
+    Left = 448
+    Top = 16
   end
 end
