@@ -20,22 +20,43 @@ type
     Chart6LineSeries2: TLineSeries;
     Label1: TLabel;
     Label2: TLabel;
-    Label_Correlation_: TLabel;
-    Label_Correlation: TLabel;
-    Label_CloseOrderPriceSource1: TLabel;
-    Label_CloseOrderPriceSource2: TLabel;
-    Label_Dif_Source1_AvgSource1: TLabel;
-    Label_Dif_Source2_AvgSource2: TLabel;
-    Label_I1_: TLabel;
-    Label_S1_: TLabel;
-    Label_U: TLabel;
-    Label_I1: TLabel;
-    Label_S1: TLabel;
-    Label_Serquent: TLabel;
-    Label_Counter: TLabel;
     Label_AvgSource1: TLabel;
     Label_AvgSource2: TLabel;
+    Label_AvgSource3: TLabel;
+    Label_AvgSource4: TLabel;
+    Label_CloseOrderPriceSource1: TLabel;
+    Label_CloseOrderPriceSource2: TLabel;
+    Label_CloseOrderPriceSource3: TLabel;
+    Label_CloseOrderPriceSource4: TLabel;
+    Label_Correlation: TLabel;
+    Label_Correlation1: TLabel;
+    Label_Correlation2: TLabel;
+    Label_Correlation2__: TLabel;
+    Label_Correlation2__1: TLabel;
+    Label_Correlation3: TLabel;
+    Label_Correlation_: TLabel;
+    Label_Correlation_1: TLabel;
+    Label_Dif_Source1_AvgSource1: TLabel;
+    Label_Dif_Source1_AvgSource2: TLabel;
+    Label_Dif_Source2_AvgSource2: TLabel;
+    Label_Dif_Source2_AvgSource3: TLabel;
+    Label_I1: TLabel;
+    Label_I1_: TLabel;
+    Label_I1_1: TLabel;
+    Label_I2: TLabel;
+    Label_S1: TLabel;
+    Label_S1_: TLabel;
+    Label_S1_1: TLabel;
+    Label_S2: TLabel;
+    Label_Serquent: TLabel;
+    Label_Counter: TLabel;
+    Label_Sqrt_I1_S1: TLabel;
+    Label_Sqrt_I1_S2: TLabel;
+    Label_U: TLabel;
+    Label_U1: TLabel;
     Label_U_: TLabel;
+    Label_U_1: TLabel;
+    PageControl2: TPageControl;
     Source1_1: TEdit;
     Source1_10: TEdit;
     Source1_2: TEdit;
@@ -56,12 +77,14 @@ type
     Source2_7: TEdit;
     Source2_8: TEdit;
     Source2_9: TEdit;
+    TabSheet_Equation01: TTabSheet;
+    TabSheet_Equation02: TTabSheet;
     _Source1_: TListChartSource;
     _Base_: TListChartSource;
     _Source2_: TListChartSource;
     PageControl1: TPageControl;
-    TabSheet1: TTabSheet;
-    TabSheet2: TTabSheet;
+    TTabSheet_Database: TTabSheet;
+    TTabSheet_Chart: TTabSheet;
     Timer1: TTimer;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -84,6 +107,21 @@ type
   public
 
   end;
+  Type
+  CalFunction = Record
+    AvgSource1_:double;
+    AvgSource2_:double;
+    CloseOrderPriceSource1:double;
+    CloseOrderPriceSource2:double;
+    Dif_Source1_AvgSource1:double;
+    Dif_Source2_AvgSource2:double;
+    U_:double;
+    I1_:double;
+    S1_:Double;
+    Sqrt_I1_S1:Double;
+    Correlation_:double;
+    Correlation2_:double;
+  end;
 
 var
   Form1: TForm1;
@@ -94,16 +132,9 @@ var
   TargetSource2: array of integer;
   Counter_: integer;
   Serquent_:integer;
-  AvgSource1_:double;
-  AvgSource2_:double;
-  CloseOrderPriceSource1:double;
-  CloseOrderPriceSource2:double;
-  Dif_Source1_AvgSource1:double;
-  Dif_Source2_AvgSource2:double;
-  U_:double;
-  I1_:double;
-  S1_:Double;
-  Correlation_:double;
+
+  CalFunction1:CalFunction;
+  CalFunction2:CalFunction;
 
 implementation
 
@@ -128,17 +159,30 @@ begin
   Setlength(TargetSource2,10);
   Counter_:=0;
   Serquent_:=0;
-  AvgSource1_:=0;
-  AvgSource2_:=0;
 
-  CloseOrderPriceSource1:=0;
-  CloseOrderPriceSource2:=0;
-  Dif_Source1_AvgSource1:=0;
-  Dif_Source2_AvgSource2:=0;
-  U_:=0;
-  I1_:=0;
-  S1_:=0;
-  Correlation_:=0;
+  CalFunction1.AvgSource1_:=0;
+  CalFunction1.AvgSource2_:=0;
+  CalFunction1.CloseOrderPriceSource1:=0;
+  CalFunction1.CloseOrderPriceSource2:=0;
+  CalFunction1.Dif_Source1_AvgSource1:=0;
+  CalFunction1.Dif_Source2_AvgSource2:=0;
+  CalFunction1.U_:=0;
+  CalFunction1.I1_:=0;
+  CalFunction1.S1_:=0;
+  CalFunction1.Correlation_:=0;
+  CalFunction1.Correlation2_:=0;
+
+  CalFunction2.AvgSource1_:=0;
+  CalFunction2.AvgSource2_:=0;
+  CalFunction2.CloseOrderPriceSource1:=0;
+  CalFunction2.CloseOrderPriceSource2:=0;
+  CalFunction2.Dif_Source1_AvgSource1:=0;
+  CalFunction2.Dif_Source2_AvgSource2:=0;
+  CalFunction2.U_:=0;
+  CalFunction2.I1_:=0;
+  CalFunction2.S1_:=0;
+  CalFunction2.Correlation_:=0;
+  CalFunction2.Correlation2_:=0;
 
   TotalBase:=0;
   for i:=0 to 9 do
@@ -390,29 +434,74 @@ procedure TForm1.Cal_();
 var
   i: integer;
 begin
-  AvgSource1_:=0;
+  CalFunction1.AvgSource1_:=0;
   for i:=0 to 9 do
   begin
-    AvgSource1_:=AvgSource1_+CurrentSource1[i];
+    CalFunction1.AvgSource1_:=CalFunction1.AvgSource1_+CurrentSource1[i];
   end;
-  AvgSource1_:=AvgSource1_/10;
+  CalFunction1.AvgSource1_:=CalFunction1.AvgSource1_/10;
 
-  AvgSource2_:=0;
+  CalFunction1.AvgSource2_:=0;
   for i:=0 to 9 do
   begin
-    AvgSource2_:=AvgSource2_+CurrentSource2[i];
+    CalFunction1.AvgSource2_:=CalFunction1.AvgSource2_+CurrentSource2[i];
   end;
-  AvgSource2_:=AvgSource2_/10;
+  CalFunction1.AvgSource2_:=CalFunction1.AvgSource2_/10;
 
 
-  CloseOrderPriceSource1:=CurrentSource1[9];
-  CloseOrderPriceSource2:=CurrentSource2[9];
-  Dif_Source1_AvgSource1:=CloseOrderPriceSource1-AvgSource1_;
-  Dif_Source2_AvgSource2:=CloseOrderPriceSource2-AvgSource2_;
-  U_:=Dif_Source1_AvgSource1*Dif_Source2_AvgSource2;
-  I1_:=Math.Power(CloseOrderPriceSource1,2);
-  S1_:=Math.Power(CloseOrderPriceSource2,2);
-  Correlation_:=U_/Sqrt(I1_*S1_);
+  CalFunction1.CloseOrderPriceSource1:=CurrentSource1[9];
+  CalFunction1.CloseOrderPriceSource2:=CurrentSource2[9];
+  CalFunction1.Dif_Source1_AvgSource1:=CalFunction1.CloseOrderPriceSource1-CalFunction1.AvgSource1_;
+  CalFunction1.Dif_Source2_AvgSource2:=CalFunction1.CloseOrderPriceSource2-CalFunction1.AvgSource2_;
+
+  CalFunction1.U_:=CalFunction1.Dif_Source1_AvgSource1+CalFunction1.Dif_Source2_AvgSource2;
+
+  CalFunction1.I1_:=Math.Power(CalFunction1.Dif_Source1_AvgSource1,2);
+  if(CalFunction1.I1_=0)then CalFunction1.I1_:=0.000001;
+
+  CalFunction1.S1_:=Math.Power(CalFunction1.Dif_Source2_AvgSource2,2);
+  if(CalFunction1.S1_=0)then CalFunction1.S1_:=0.000001;
+
+  CalFunction1.Sqrt_I1_S1:=Sqrt(CalFunction1.I1_+CalFunction1.S1_);
+
+  CalFunction1.Correlation_:=CalFunction1.U_/Sqrt(CalFunction1.I1_+CalFunction1.S1_);
+  CalFunction1.Correlation2_:= Math.Power(CalFunction1.Correlation_,2)/2;
+
+
+
+
+  CalFunction2.AvgSource1_:=0;
+  CalFunction2.AvgSource2_:=0;
+  CalFunction2.U_:=0;
+  CalFunction2.I1_:=0;
+  CalFunction2.S1_:=0;
+  for i:=0 to 9 do
+  begin
+    CalFunction2.AvgSource1_:=CalFunction2.AvgSource1_+CurrentSource1[i];
+    CalFunction2.AvgSource1_:=CalFunction2.AvgSource1_/(i+1);
+
+    CalFunction2.AvgSource2_:=CalFunction2.AvgSource2_+CurrentSource2[i];
+    CalFunction2.AvgSource2_:=CalFunction2.AvgSource2_/(i+1);
+
+    CalFunction2.CloseOrderPriceSource1:=CurrentSource1[i];
+    CalFunction2.CloseOrderPriceSource2:=CurrentSource2[i];
+
+    CalFunction2.Dif_Source1_AvgSource1:=CalFunction2.CloseOrderPriceSource1-CalFunction2.AvgSource1_;
+    CalFunction2.Dif_Source2_AvgSource2:=CalFunction2.CloseOrderPriceSource2-CalFunction2.AvgSource2_;
+
+    CalFunction2.U_:=CalFunction2.U_+CalFunction2.Dif_Source1_AvgSource1*CalFunction2.Dif_Source2_AvgSource2;
+
+    CalFunction2.I1_:=CalFunction2.I1_+Math.Power(CalFunction2.Dif_Source1_AvgSource1,2);
+    if(CalFunction2.I1_=0)then CalFunction2.I1_:=0.000001;
+
+    CalFunction2.S1_:=CalFunction2.S1_+Math.Power(CalFunction2.Dif_Source2_AvgSource2,2);
+    if(CalFunction2.S1_=0)then CalFunction2.S1_:=0.000001;
+
+    CalFunction2.Sqrt_I1_S1:=Sqrt(CalFunction2.I1_*CalFunction2.S1_);
+
+    CalFunction2.Correlation_:=CalFunction2.U_/Sqrt(CalFunction2.I1_*CalFunction2.S1_);
+    CalFunction2.Correlation2_:= Math.Power(CalFunction2.Correlation_,2)/2;
+  end;
 end;
 
 procedure TForm1.DisplayStatus();
@@ -421,9 +510,6 @@ var
 begin
   Label_Serquent.Caption:='Serquent='+Serquent_.ToString;
   Label_Counter.Caption:='Counter='+Counter_.ToString;
-
-  Label_AvgSource1.Caption:='AvgSource1='+AvgSource1_.ToString;
-  Label_AvgSource2.Caption:='AvgSource2='+AvgSource2_.ToString;
 
   Source1_1.Caption:=CurrentSource1[0].ToString;
   Source1_2.Caption:=CurrentSource1[1].ToString;
@@ -457,14 +543,31 @@ begin
     _Source2_.SetYValue(i,CurrentSource2[i]);
   end;
 
-  Label_CloseOrderPriceSource1.Caption:='CloseOrderPriceSource1='+CloseOrderPriceSource1.ToString;
-  Label_CloseOrderPriceSource2.Caption:='CloseOrderPriceSource2='+CloseOrderPriceSource2.ToString;
-  Label_Dif_Source1_AvgSource1.Caption:='Source1-AvgSource1='+Dif_Source1_AvgSource1.ToString;
-  Label_Dif_Source2_AvgSource2.Caption:='Source2-AvgSource2='+Dif_Source2_AvgSource2.ToString;
-  Label_U.Caption:='U='+U_.ToString;
-  Label_I1.Caption:='I1='+I1_.ToString;
-  Label_S1.Caption:='S1='+S1_.ToString;
-  Label_Correlation.Caption:='Correlation='+Correlation_.ToString;
+  Label_AvgSource1.Caption:='AvgSource1='+CalFunction1.AvgSource1_.ToString;
+  Label_AvgSource2.Caption:='AvgSource2='+CalFunction1.AvgSource2_.ToString;
+  Label_CloseOrderPriceSource1.Caption:='CloseOrderPriceSource1='+CalFunction1.CloseOrderPriceSource1.ToString;
+  Label_CloseOrderPriceSource2.Caption:='CloseOrderPriceSource2='+CalFunction1.CloseOrderPriceSource2.ToString;
+  Label_Dif_Source1_AvgSource1.Caption:='Source1-AvgSource1='+CalFunction1.Dif_Source1_AvgSource1.ToString;
+  Label_Dif_Source2_AvgSource2.Caption:='Source2-AvgSource2='+CalFunction1.Dif_Source2_AvgSource2.ToString;
+  Label_U.Caption:='U='+CalFunction1.U_.ToString;
+  Label_I1.Caption:='I1='+CalFunction1.I1_.ToString;
+  Label_S1.Caption:='S1='+CalFunction1.S1_.ToString;
+  Label_Sqrt_I1_S1.Caption:=' Sqrt( I1 + S1 )='+ CalFunction1.Sqrt_I1_S1.ToString;
+  Label_Correlation.Caption:='Correlation='+CalFunction1.Correlation_.ToString;
+  Label_Correlation2.Caption:='Correlation2='+CalFunction1.Correlation2_.ToString;
+
+  Label_AvgSource3.Caption:='AvgSource1='+CalFunction2.AvgSource1_.ToString;
+  Label_AvgSource4.Caption:='AvgSource2='+CalFunction2.AvgSource2_.ToString;
+  Label_CloseOrderPriceSource3.Caption:='CloseOrderPriceSource1='+CalFunction2.CloseOrderPriceSource1.ToString;
+  Label_CloseOrderPriceSource4.Caption:='CloseOrderPriceSource2='+CalFunction2.CloseOrderPriceSource2.ToString;
+  Label_Dif_Source1_AvgSource2.Caption:='Source1-AvgSource1='+CalFunction2.Dif_Source1_AvgSource1.ToString;
+  Label_Dif_Source2_AvgSource3.Caption:='Source2-AvgSource2='+CalFunction2.Dif_Source2_AvgSource2.ToString;
+  Label_U1.Caption:='U='+CalFunction2.U_.ToString;
+  Label_I2.Caption:='I1='+CalFunction2.I1_.ToString;
+  Label_S2.Caption:='S1='+CalFunction2.S1_.ToString;
+  Label_Sqrt_I1_S2.Caption:=' Sqrt( I1 + S1 )='+ CalFunction2.Sqrt_I1_S1.ToString;
+  Label_Correlation1.Caption:='Correlation='+CalFunction2.Correlation_.ToString;
+  Label_Correlation3.Caption:='Correlation2='+CalFunction2.Correlation2_.ToString;
 end;
 
 procedure TForm1.Source1_Up_To_TargetSource1(Loop_: integer);
