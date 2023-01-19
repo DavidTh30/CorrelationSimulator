@@ -1,62 +1,126 @@
 object Form1: TForm1
-  Left = 466
-  Height = 543
-  Top = 127
-  Width = 867
+  Left = 457
+  Height = 458
+  Top = 98
+  Width = 822
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
   Caption = 'CorrelationSimulator'
-  ClientHeight = 543
-  ClientWidth = 867
+  ClientHeight = 458
+  ClientWidth = 822
   OnCreate = FormCreate
+  Position = poWorkAreaCenter
   LCLVersion = '2.2.0.4'
   object Button1: TButton
-    Left = 560
+    Left = 448
     Height = 32
-    Top = 40
+    Top = 8
     Width = 83
     Caption = 'Start'
     OnClick = Button1Click
     TabOrder = 0
   end
   object Label_Serquent: TLabel
-    Left = 565
+    Left = 544
     Height = 15
-    Top = 94
+    Top = 7
     Width = 61
     Caption = 'Serquent=0'
   end
   object Label_Counter: TLabel
-    Left = 565
+    Left = 544
     Height = 15
-    Top = 112
+    Top = 25
     Width = 57
     Caption = 'Counter=0'
   end
-  object Label_AvgSource1: TLabel
-    Left = 560
-    Height = 15
-    Top = 144
-    Width = 77
-    Caption = 'AvgSource1=0'
-  end
-  object Label_AvgSource2: TLabel
-    Left = 560
-    Height = 15
-    Top = 168
-    Width = 77
-    Caption = 'AvgSource2=0'
-  end
   object PageControl1: TPageControl
     Left = 8
-    Height = 520
+    Height = 440
     Top = 8
-    Width = 528
-    ActivePage = TabSheet2
-    TabIndex = 1
+    Width = 416
+    ActivePage = TTabSheet_Chart
+    TabIndex = 0
     TabOrder = 1
-    object TabSheet1: TTabSheet
-      Caption = 'TabSheet1'
-      ClientHeight = 492
-      ClientWidth = 520
+    object TTabSheet_Chart: TTabSheet
+      Caption = 'Chart'
+      ClientHeight = 412
+      ClientWidth = 408
+      object Chart6: TChart
+        Left = 0
+        Height = 412
+        Top = 0
+        Width = 408
+        AxisList = <        
+          item
+            Grid.Color = clGray
+            Marks.LabelBrush.Style = bsClear
+            Minors = <>
+            Title.LabelFont.Orientation = 900
+            Title.LabelBrush.Style = bsClear
+          end        
+          item
+            Grid.Color = clGray
+            Alignment = calBottom
+            Marks.LabelBrush.Style = bsClear
+            Minors = <>
+            Title.LabelBrush.Style = bsClear
+          end>
+        Extent.UseXMax = True
+        Extent.UseXMin = True
+        Extent.UseYMax = True
+        Extent.UseYMin = True
+        Extent.XMax = 10
+        Extent.XMin = -1
+        Extent.YMax = 101
+        Extent.YMin = -1
+        ExtentSizeLimit.UseXMax = True
+        ExtentSizeLimit.UseXMin = True
+        ExtentSizeLimit.UseYMax = True
+        ExtentSizeLimit.UseYMin = True
+        ExtentSizeLimit.XMax = 10
+        ExtentSizeLimit.XMin = -1
+        ExtentSizeLimit.YMax = 101
+        ExtentSizeLimit.YMin = -1
+        Foot.Brush.Color = clBtnFace
+        Foot.Font.Color = clBlue
+        Title.Brush.Color = clBtnFace
+        Title.Font.Color = clBlue
+        Title.Text.Strings = (
+          'TAChart'
+        )
+        Align = alClient
+        object Chart2LineSeries1: TLineSeries
+          LinePen.Color = clLime
+          LinePen.Width = 2
+          Pointer.Brush.Color = 8404992
+          Pointer.HorizSize = 2
+          Pointer.VertSize = 2
+          Pointer.Visible = True
+          ShowPoints = True
+          Source = _Source1_
+        end
+        object Chart6LineSeries1: TLineSeries
+          LinePen.Color = clSilver
+          LinePen.Style = psDot
+          Source = _Base_
+        end
+        object Chart6LineSeries2: TLineSeries
+          LinePen.Color = clRed
+          LinePen.Width = 2
+          Pointer.Brush.Color = 8404992
+          Pointer.HorizSize = 2
+          Pointer.VertSize = 2
+          Pointer.Visible = True
+          ShowPoints = True
+          Source = _Source2_
+        end
+      end
+    end
+    object TTabSheet_Database: TTabSheet
+      Caption = 'Database'
+      ClientHeight = 412
+      ClientWidth = 408
       object Label2: TLabel
         Left = 144
         Height = 15
@@ -252,195 +316,293 @@ object Form1: TForm1
         Caption = 'Source 1'
       end
     end
-    object TabSheet2: TTabSheet
-      Caption = 'TabSheet2'
-      ClientHeight = 492
-      ClientWidth = 520
-      object Chart6: TChart
-        Left = 0
-        Height = 492
-        Top = 0
-        Width = 520
-        AxisList = <        
-          item
-            Grid.Color = clGray
-            Marks.LabelBrush.Style = bsClear
-            Minors = <>
-            Title.LabelFont.Orientation = 900
-            Title.LabelBrush.Style = bsClear
-          end        
-          item
-            Grid.Color = clGray
-            Alignment = calBottom
-            Marks.LabelBrush.Style = bsClear
-            Minors = <>
-            Title.LabelBrush.Style = bsClear
-          end>
-        Extent.UseXMax = True
-        Extent.UseXMin = True
-        Extent.UseYMax = True
-        Extent.UseYMin = True
-        Extent.XMax = 10
-        Extent.XMin = -1
-        Extent.YMax = 101
-        Extent.YMin = -1
-        ExtentSizeLimit.UseXMax = True
-        ExtentSizeLimit.UseXMin = True
-        ExtentSizeLimit.UseYMax = True
-        ExtentSizeLimit.UseYMin = True
-        ExtentSizeLimit.XMax = 10
-        ExtentSizeLimit.XMin = -1
-        ExtentSizeLimit.YMax = 101
-        ExtentSizeLimit.YMin = -1
-        Foot.Brush.Color = clBtnFace
-        Foot.Font.Color = clBlue
-        Title.Brush.Color = clBtnFace
-        Title.Font.Color = clBlue
-        Title.Text.Strings = (
-          'TAChart'
-        )
-        Align = alClient
-        object Chart2LineSeries1: TLineSeries
-          LinePen.Color = clLime
-          LinePen.Width = 2
-          Pointer.Brush.Color = 8404992
-          Pointer.HorizSize = 2
-          Pointer.VertSize = 2
-          Pointer.Visible = True
-          ShowPoints = True
-          Source = _Source1_
-        end
-        object Chart6LineSeries1: TLineSeries
-          LinePen.Color = clSilver
-          LinePen.Style = psDot
-          Source = _Base_
-        end
-        object Chart6LineSeries2: TLineSeries
-          LinePen.Color = clRed
-          LinePen.Width = 2
-          Pointer.Brush.Color = 8404992
-          Pointer.HorizSize = 2
-          Pointer.VertSize = 2
-          Pointer.Visible = True
-          ShowPoints = True
-          Source = _Source2_
-        end
+  end
+  object PageControl2: TPageControl
+    Left = 432
+    Height = 392
+    Top = 56
+    Width = 376
+    ActivePage = TabSheet_Equation01
+    TabIndex = 0
+    TabOrder = 2
+    object TabSheet_Equation01: TTabSheet
+      Caption = 'Equation01'
+      ClientHeight = 364
+      ClientWidth = 368
+      object Label_AvgSource1: TLabel
+        Left = 8
+        Height = 15
+        Top = 8
+        Width = 77
+        Caption = 'AvgSource1=0'
+      end
+      object Label_AvgSource2: TLabel
+        Left = 8
+        Height = 15
+        Top = 32
+        Width = 77
+        Caption = 'AvgSource2=0'
+      end
+      object Label_CloseOrderPriceSource1: TLabel
+        Left = 8
+        Height = 15
+        Top = 60
+        Width = 141
+        Caption = 'CloseOrderPriceSource1=0'
+      end
+      object Label_CloseOrderPriceSource2: TLabel
+        Left = 8
+        Height = 15
+        Top = 80
+        Width = 141
+        Caption = 'CloseOrderPriceSource2=0'
+      end
+      object Label_Dif_Source1_AvgSource1: TLabel
+        Left = 8
+        Height = 15
+        Top = 104
+        Width = 124
+        Caption = 'Source1-AvgSource1=0'
+      end
+      object Label_Dif_Source2_AvgSource2: TLabel
+        Left = 8
+        Height = 15
+        Top = 120
+        Width = 124
+        Caption = 'Source2-AvgSource2=0'
+      end
+      object Label_U: TLabel
+        Left = 8
+        Height = 15
+        Top = 160
+        Width = 22
+        Caption = 'U=0'
+      end
+      object Label_I1: TLabel
+        Left = 8
+        Height = 15
+        Top = 192
+        Width = 23
+        Caption = 'I1=0'
+      end
+      object Label_S1: TLabel
+        Left = 8
+        Height = 15
+        Top = 224
+        Width = 26
+        Caption = 'S1=0'
+      end
+      object Label_Correlation_: TLabel
+        Left = 8
+        Height = 15
+        Top = 256
+        Width = 156
+        Caption = 'Correlation=U / Sqrt( I1 + S1 )'
+      end
+      object Label_U_: TLabel
+        Left = 8
+        Height = 15
+        Top = 144
+        Width = 260
+        Caption = 'U=(Source1-AvgSource1)+(Source2-AvgSource2)'
+      end
+      object Label_I1_: TLabel
+        Left = 8
+        Height = 15
+        Top = 176
+        Width = 158
+        Caption = 'I1=CloseOrderPriceSource1^2'
+      end
+      object Label_S1_: TLabel
+        Left = 8
+        Height = 15
+        Top = 208
+        Width = 161
+        Caption = 'S1=CloseOrderPriceSource2^2'
+      end
+      object Label_Correlation: TLabel
+        Left = 8
+        Height = 15
+        Top = 272
+        Width = 73
+        Caption = 'Correlation=0'
+      end
+      object Label_Sqrt_I1_S1: TLabel
+        Left = 8
+        Height = 15
+        Top = 240
+        Width = 87
+        Caption = ' Sqrt( I1 + S1 )=0'
+      end
+      object Label_Correlation2: TLabel
+        Left = 8
+        Height = 15
+        Top = 304
+        Width = 79
+        Caption = 'Correlation2=0'
+      end
+      object Label_Correlation2__: TLabel
+        Left = 8
+        Height = 15
+        Top = 288
+        Width = 165
+        Caption = 'Correlation2=(Correlation^2)/2'
       end
     end
-  end
-  object Label_CloseOrderPriceSource1: TLabel
-    Left = 560
-    Height = 15
-    Top = 196
-    Width = 141
-    Caption = 'CloseOrderPriceSource1=0'
-  end
-  object Label_CloseOrderPriceSource2: TLabel
-    Left = 560
-    Height = 15
-    Top = 216
-    Width = 141
-    Caption = 'CloseOrderPriceSource2=0'
-  end
-  object Label_Dif_Source1_AvgSource1: TLabel
-    Left = 560
-    Height = 15
-    Top = 240
-    Width = 124
-    Caption = 'Source1-AvgSource1=0'
-  end
-  object Label_Dif_Source2_AvgSource2: TLabel
-    Left = 560
-    Height = 15
-    Top = 256
-    Width = 124
-    Caption = 'Source2-AvgSource2=0'
-  end
-  object Label_U: TLabel
-    Left = 560
-    Height = 15
-    Top = 296
-    Width = 22
-    Caption = 'U=0'
-  end
-  object Label_I1: TLabel
-    Left = 560
-    Height = 15
-    Top = 328
-    Width = 23
-    Caption = 'I1=0'
-  end
-  object Label_S1: TLabel
-    Left = 560
-    Height = 15
-    Top = 360
-    Width = 26
-    Caption = 'S1=0'
-  end
-  object Label_Correlation_: TLabel
-    Left = 560
-    Height = 15
-    Top = 376
-    Width = 153
-    Caption = 'Correlation=U / Sqrt( I1 * S1 )'
-  end
-  object Label_U_: TLabel
-    Left = 560
-    Height = 15
-    Top = 280
-    Width = 257
-    Caption = 'U=(Source1-AvgSource1)*(Source2-AvgSource2)'
-  end
-  object Label_I1_: TLabel
-    Left = 560
-    Height = 15
-    Top = 312
-    Width = 158
-    Caption = 'I1=CloseOrderPriceSource1^2'
-  end
-  object Label_S1_: TLabel
-    Left = 560
-    Height = 15
-    Top = 344
-    Width = 161
-    Caption = 'S1=CloseOrderPriceSource2^2'
-  end
-  object Label_Correlation: TLabel
-    Left = 560
-    Height = 15
-    Top = 392
-    Width = 73
-    Caption = 'Correlation=0'
+    object TabSheet_Equation02: TTabSheet
+      Caption = 'Equation02'
+      ClientHeight = 364
+      ClientWidth = 368
+      object Label_AvgSource3: TLabel
+        Left = 8
+        Height = 15
+        Top = 8
+        Width = 77
+        Caption = 'AvgSource1=0'
+      end
+      object Label_AvgSource4: TLabel
+        Left = 8
+        Height = 15
+        Top = 32
+        Width = 77
+        Caption = 'AvgSource2=0'
+      end
+      object Label_CloseOrderPriceSource3: TLabel
+        Left = 8
+        Height = 15
+        Top = 60
+        Width = 141
+        Caption = 'CloseOrderPriceSource1=0'
+      end
+      object Label_CloseOrderPriceSource4: TLabel
+        Left = 8
+        Height = 15
+        Top = 80
+        Width = 141
+        Caption = 'CloseOrderPriceSource2=0'
+      end
+      object Label_Dif_Source1_AvgSource2: TLabel
+        Left = 8
+        Height = 15
+        Top = 104
+        Width = 124
+        Caption = 'Source1-AvgSource1=0'
+      end
+      object Label_Dif_Source2_AvgSource3: TLabel
+        Left = 8
+        Height = 15
+        Top = 120
+        Width = 124
+        Caption = 'Source2-AvgSource2=0'
+      end
+      object Label_U1: TLabel
+        Left = 8
+        Height = 15
+        Top = 160
+        Width = 22
+        Caption = 'U=0'
+      end
+      object Label_I2: TLabel
+        Left = 8
+        Height = 15
+        Top = 192
+        Width = 23
+        Caption = 'I1=0'
+      end
+      object Label_S2: TLabel
+        Left = 8
+        Height = 15
+        Top = 224
+        Width = 26
+        Caption = 'S1=0'
+      end
+      object Label_Correlation_1: TLabel
+        Left = 8
+        Height = 15
+        Top = 256
+        Width = 153
+        Caption = 'Correlation=U / Sqrt( I1 * S1 )'
+      end
+      object Label_U_1: TLabel
+        Left = 8
+        Height = 15
+        Top = 144
+        Width = 257
+        Caption = 'U=(Source1-AvgSource1)*(Source2-AvgSource2)'
+      end
+      object Label_I1_1: TLabel
+        Left = 8
+        Height = 15
+        Top = 176
+        Width = 158
+        Caption = 'I1=CloseOrderPriceSource1^2'
+      end
+      object Label_S1_1: TLabel
+        Left = 8
+        Height = 15
+        Top = 208
+        Width = 161
+        Caption = 'S1=CloseOrderPriceSource2^2'
+      end
+      object Label_Correlation1: TLabel
+        Left = 8
+        Height = 15
+        Top = 272
+        Width = 73
+        Caption = 'Correlation=0'
+      end
+      object Label_Sqrt_I1_S2: TLabel
+        Left = 8
+        Height = 15
+        Top = 240
+        Width = 84
+        Caption = ' Sqrt( I1 * S1 )=0'
+      end
+      object Label_Correlation3: TLabel
+        Left = 8
+        Height = 15
+        Top = 304
+        Width = 79
+        Caption = 'Correlation2=0'
+      end
+      object Label_Correlation2__1: TLabel
+        Left = 8
+        Height = 15
+        Top = 288
+        Width = 165
+        Caption = 'Correlation2=(Correlation^2)/2'
+      end
+    end
   end
   object Timer1: TTimer
     Enabled = False
     Interval = 100
     OnTimer = Timer1Timer
-    Left = 496
-    Top = 16
+    Left = 376
+    Top = 40
   end
   object _Source1_: TListChartSource
     DataPoints.Strings = (
       '0|0|?|'
       '1|1|?|'
     )
-    Left = 448
-    Top = 16
+    Left = 328
+    Top = 40
   end
   object _Base_: TListChartSource
     DataPoints.Strings = (
       '0|0|?|'
       '1|1|?|'
     )
-    Left = 448
-    Top = 16
+    Left = 328
+    Top = 40
   end
   object _Source2_: TListChartSource
     DataPoints.Strings = (
       '0|0|?|'
       '1|1|?|'
     )
-    Left = 448
-    Top = 16
+    Left = 328
+    Top = 40
   end
 end
