@@ -299,26 +299,32 @@ object Form1: TForm1
         )
         Align = alClient
         object Chart2LineSeries1: TLineSeries
-          LinePen.Color = clBlue
+          LinePen.Color = clLime
           LinePen.Width = 2
           Pointer.Brush.Color = 8404992
           Pointer.HorizSize = 2
           Pointer.VertSize = 2
           Pointer.Visible = True
           ShowPoints = True
-          Source = lcsDerivative4
+          Source = _Source1_
+        end
+        object Chart6LineSeries1: TLineSeries
+          LinePen.Color = clSilver
+          LinePen.Style = psDot
+          Source = _Base_
+        end
+        object Chart6LineSeries2: TLineSeries
+          LinePen.Color = clRed
+          LinePen.Width = 2
+          Pointer.Brush.Color = 8404992
+          Pointer.HorizSize = 2
+          Pointer.VertSize = 2
+          Pointer.Visible = True
+          ShowPoints = True
+          Source = _Source2_
         end
       end
     end
-  end
-  object Button2: TButton
-    Left = 316
-    Height = 70
-    Top = 307
-    Width = 103
-    Caption = 'Button2'
-    OnClick = Button2Click
-    TabOrder = 22
   end
   object Timer1: TTimer
     Enabled = False
@@ -327,7 +333,23 @@ object Form1: TForm1
     Left = 328
     Top = 33
   end
-  object lcsDerivative4: TListChartSource
+  object _Source1_: TListChartSource
+    DataPoints.Strings = (
+      '0|0|?|'
+      '1|1|?|'
+    )
+    Left = 432
+    Top = 24
+  end
+  object _Base_: TListChartSource
+    DataPoints.Strings = (
+      '0|0|?|'
+      '1|1|?|'
+    )
+    Left = 432
+    Top = 24
+  end
+  object _Source2_: TListChartSource
     DataPoints.Strings = (
       '0|0|?|'
       '1|1|?|'
