@@ -5,7 +5,8 @@ unit Unit1;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
+  ComCtrls, TAGraph, TASources, TASeries;
 
 type
 
@@ -13,12 +14,17 @@ type
 
   TForm1 = class(TForm)
     Button1: TButton;
+    Button2: TButton;
+    Chart2LineSeries1: TLineSeries;
+    Chart6: TChart;
     Label1: TLabel;
     Label2: TLabel;
     Label_Serquent: TLabel;
     Label_Counter: TLabel;
     Label_AvgSource1: TLabel;
     Label_AvgSource2: TLabel;
+    lcsDerivative4: TListChartSource;
+    PageControl1: TPageControl;
     Source1_1: TEdit;
     Source1_10: TEdit;
     Source2_1: TEdit;
@@ -39,8 +45,11 @@ type
     Source2_7: TEdit;
     Source2_8: TEdit;
     Source2_9: TEdit;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
     Timer1: TTimer;
     procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure DisplayStatus();
@@ -328,6 +337,38 @@ begin
 
   if Timer1.Enabled then Button1.Caption:='Stop';
   if Not Timer1.Enabled then Button1.Caption:='Start';
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+var
+  i:integer;
+begin
+  //lcsDerivative5.Clear;
+  //lcsDerivative5.Add(Simulate,Chart6.LeftAxis.Range.Min);
+  //lcsDerivative5.Add(Simulate,Chart6.LeftAxis.Range.Max);
+
+  //lcsDerivative5.SetyValue(0,Chart6.LeftAxis.Range.Min);
+  //lcsDerivative5.SetyValue(1,Chart6.LeftAxis.Range.Max);
+  //lcsDerivative5.SetxValue(0,Simulate);
+  //lcsDerivative5.SetxValue(1,Simulate);
+
+  lcsDerivative4.Clear;
+
+  //lcsDerivative4.Add(1,10);
+  //lcsDerivative4.Add(2,20);
+  //lcsDerivative4.Add(3,30);
+  //Chart6.LeftAxis.Range.UseMax:=True;
+  //Chart6.LeftAxis.Range.UseMin:=True;
+
+  for i:=0 to 9 do
+  begin
+    lcsDerivative4.Add(i,Base_[i] );
+    lcsDerivative4.SetXValue(0,0);
+    lcsDerivative4.SetYValue(0,0);
+    //Base_
+    //TargetSource1
+    //TargetSource2
+  end;
 end;
 
 procedure TForm1.DisplayStatus();
