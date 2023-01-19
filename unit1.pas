@@ -50,6 +50,12 @@ type
     Label_S2: TLabel;
     Label_Serquent: TLabel;
     Label_Counter: TLabel;
+    Label_Source1: TLabel;
+    Label_Source2: TLabel;
+    Label_Source3: TLabel;
+    Label_Source4: TLabel;
+    Label_Source5: TLabel;
+    Label_Source6: TLabel;
     Label_Sqrt_I1_S1: TLabel;
     Label_Sqrt_I1_S2: TLabel;
     Label_U: TLabel;
@@ -57,6 +63,12 @@ type
     Label_U_: TLabel;
     Label_U_1: TLabel;
     PageControl2: TPageControl;
+    Shape1: TShape;
+    Shape2: TShape;
+    Shape3: TShape;
+    Shape4: TShape;
+    Shape5: TShape;
+    Shape6: TShape;
     Source1_1: TEdit;
     Source1_10: TEdit;
     Source1_2: TEdit;
@@ -509,6 +521,12 @@ var
   i: integer;
 begin
   Label_Serquent.Caption:='Serquent='+Serquent_.ToString;
+  if(Serquent_=1)then Label_Serquent.Caption:=Label_Serquent.Caption+'  Maximum Source1';
+  if(Serquent_=5)then Label_Serquent.Caption:=Label_Serquent.Caption+'  Minimum Source1';
+  if(Serquent_=9)then Label_Serquent.Caption:=Label_Serquent.Caption+'  Minimum Source2';
+  if(Serquent_=13)then Label_Serquent.Caption:=Label_Serquent.Caption+'  Maximum Source2';
+  if(Serquent_=17)then Label_Serquent.Caption:=Label_Serquent.Caption+'  Maximum Source1 + Minimum Source2';
+  if(Serquent_=19)then Label_Serquent.Caption:=Label_Serquent.Caption+'  Minimum Source1 + Maximum Source2';
   Label_Counter.Caption:='Counter='+Counter_.ToString;
 
   Source1_1.Caption:=CurrentSource1[0].ToString;
