@@ -18,8 +18,11 @@ type
     Chart6: TChart;
     Chart6LineSeries1: TLineSeries;
     Chart6LineSeries2: TLineSeries;
+    Image_Correlation_Coefficient_of_Source_1: TImage;
+    Image_Correlation_Coefficient_of_Source_2: TImage;
     Label1: TLabel;
     Label2: TLabel;
+    Label_Correlation_Coefficient_of_Source_1: TLabel;
     Label_AvgSource1: TLabel;
     Label_AvgSource2: TLabel;
     Label_AvgSource3: TLabel;
@@ -28,6 +31,9 @@ type
     Label_CloseOrderPriceSource2: TLabel;
     Label_CloseOrderPriceSource3: TLabel;
     Label_CloseOrderPriceSource4: TLabel;
+    Label_Correlation_Coefficient_of_Source_2: TLabel;
+    Label_Source2_r: TLabel;
+    Label_Source1_Summation_X: TLabel;
     Label_Correlation: TLabel;
     Label_Correlation1: TLabel;
     Label_Correlation2: TLabel;
@@ -51,11 +57,23 @@ type
     Label_Serquent: TLabel;
     Label_Counter: TLabel;
     Label_Source1: TLabel;
+    Label_Source2_Summation_X: TLabel;
+    Label_Source2_Summation_X_power: TLabel;
+    Label_Source2_Summation_X_Y: TLabel;
+    Label_Source1_Summation_Y: TLabel;
+    Label_Source1_Summation_X_power: TLabel;
+    Label_Source1_Summation_X_Y: TLabel;
+    Label_Source2_Summation_Y: TLabel;
+    Label_Source1_Summation_Y_power: TLabel;
+    Label_Source1_r: TLabel;
+    Label_Source2_Summation_Y_power: TLabel;
     Label_Source2: TLabel;
     Label_Source3: TLabel;
     Label_Source4: TLabel;
     Label_Source5: TLabel;
     Label_Source6: TLabel;
+    Label_Source7: TLabel;
+    Label_Source8: TLabel;
     Label_Sqrt_I1_S1: TLabel;
     Label_Sqrt_I1_S2: TLabel;
     Label_U: TLabel;
@@ -69,6 +87,8 @@ type
     Shape4: TShape;
     Shape5: TShape;
     Shape6: TShape;
+    Shape7: TShape;
+    Shape8: TShape;
     Source1_1: TEdit;
     Source1_10: TEdit;
     Source1_2: TEdit;
@@ -89,6 +109,8 @@ type
     Source2_7: TEdit;
     Source2_8: TEdit;
     Source2_9: TEdit;
+    TabSheet_Correlation_Coefficient_of_Source_2: TTabSheet;
+    TabSheet_Correlation_Coefficient_of_Source_1: TTabSheet;
     TabSheet_Equation01: TTabSheet;
     TabSheet_Equation02: TTabSheet;
     _Source1_: TListChartSource;
@@ -102,6 +124,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure Cal_();
+    procedure Cal_CorrelationCoefficient();
     procedure DisplayStatus();
     procedure Source1_Up_To_TargetSource1(Loop_: integer);
     procedure Source1_Down_To_Base(Loop_: integer);
@@ -135,6 +158,16 @@ type
     Correlation2_:double;
   end;
 
+  Type
+  Correlation_Coefficient = Record
+    Summation_X:double;
+    Summation_Y:double;
+    Summation_X_Y:double;
+    Summation_X_power:double;
+    Summation_Y_power:double;
+    r_:double;
+  end;
+
 var
   Form1: TForm1;
   Base_: array of integer;
@@ -147,6 +180,9 @@ var
 
   CalFunction1:CalFunction;
   CalFunction2:CalFunction;
+
+  CorrelationCoefficient1:Correlation_Coefficient;
+  CorrelationCoefficient2:Correlation_Coefficient;
 
 implementation
 
@@ -195,6 +231,20 @@ begin
   CalFunction2.S1_:=0;
   CalFunction2.Correlation_:=0;
   CalFunction2.Correlation2_:=0;
+
+  CorrelationCoefficient1.Summation_X:=0;
+  CorrelationCoefficient1.Summation_Y:=0;
+  CorrelationCoefficient1.Summation_X_Y:=0;
+  CorrelationCoefficient1.Summation_X_power:=0;
+  CorrelationCoefficient1.Summation_Y_power:=0;
+  CorrelationCoefficient1.r_:=0;
+
+  CorrelationCoefficient2.Summation_X:=0;
+  CorrelationCoefficient2.Summation_Y:=0;
+  CorrelationCoefficient2.Summation_X_Y:=0;
+  CorrelationCoefficient2.Summation_X_power:=0;
+  CorrelationCoefficient2.Summation_Y_power:=0;
+  CorrelationCoefficient2.r_:=0;
 
   TotalBase:=0;
   for i:=0 to 9 do
@@ -270,6 +320,7 @@ begin
   end;
 
   Cal_();
+  Cal_CorrelationCoefficient();
   DisplayStatus();
   //Chart6.LeftAxis.Range.UseMax:=True;
   //Chart6.LeftAxis.Range.UseMin:=True;
@@ -431,6 +482,7 @@ begin
   end;
 
   Cal_();
+  Cal_CorrelationCoefficient();
   DisplayStatus();
 end;
 
@@ -516,6 +568,49 @@ begin
   end;
 end;
 
+procedure TForm1.Cal_CorrelationCoefficient();
+var
+  i: integer;
+begin
+
+  CorrelationCoefficient1.Summation_X:=0;
+  CorrelationCoefficient1.Summation_Y:=0;
+  CorrelationCoefficient1.Summation_X_Y:=0;
+  CorrelationCoefficient1.Summation_X_power:=0;
+  CorrelationCoefficient1.Summation_Y_power:=0;
+  CorrelationCoefficient1.r_:=0;
+  for i:=0 to 9 do
+  begin
+    CorrelationCoefficient1.Summation_X:=CorrelationCoefficient1.Summation_X+(i+1);
+    CorrelationCoefficient1.Summation_Y:=CorrelationCoefficient1.Summation_Y+CurrentSource1[i];
+    CorrelationCoefficient1.Summation_X_Y:=CorrelationCoefficient1.Summation_X_Y+((i+1)*CurrentSource1[i]);
+    CorrelationCoefficient1.Summation_X_power:=CorrelationCoefficient1.Summation_X_power+Math.Power(i+1,2);
+    CorrelationCoefficient1.Summation_Y_power:=CorrelationCoefficient1.Summation_Y_power+Math.Power(CurrentSource1[i],2);
+  end;
+  i:=9;
+  CorrelationCoefficient1.r_:=((i+1)*CorrelationCoefficient1.Summation_X_Y)-(CorrelationCoefficient1.Summation_X*CorrelationCoefficient1.Summation_Y);
+  CorrelationCoefficient1.r_:=CorrelationCoefficient1.r_/Sqrt((((i+1)*CorrelationCoefficient1.Summation_X_power)-Math.Power(CorrelationCoefficient1.Summation_X,2))*(((i+1)*CorrelationCoefficient1.Summation_Y_power)-Math.Power(CorrelationCoefficient1.Summation_Y,2)));
+
+
+  CorrelationCoefficient2.Summation_X:=0;
+  CorrelationCoefficient2.Summation_Y:=0;
+  CorrelationCoefficient2.Summation_X_Y:=0;
+  CorrelationCoefficient2.Summation_X_power:=0;
+  CorrelationCoefficient2.Summation_Y_power:=0;
+  CorrelationCoefficient2.r_:=0;
+  for i:=0 to 9 do
+  begin
+    CorrelationCoefficient2.Summation_X:=CorrelationCoefficient2.Summation_X+(i+1);
+    CorrelationCoefficient2.Summation_Y:=CorrelationCoefficient2.Summation_Y+CurrentSource2[i];
+    CorrelationCoefficient2.Summation_X_Y:=CorrelationCoefficient2.Summation_X_Y+((i+1)*CurrentSource2[i]);
+    CorrelationCoefficient2.Summation_X_power:=CorrelationCoefficient2.Summation_X_power+Math.Power(i+1,2);
+    CorrelationCoefficient2.Summation_Y_power:=CorrelationCoefficient2.Summation_Y_power+Math.Power(CurrentSource2[i],2);
+  end;
+  i:=9;
+  CorrelationCoefficient2.r_:=((i+1)*CorrelationCoefficient2.Summation_X_Y)-(CorrelationCoefficient2.Summation_X*CorrelationCoefficient2.Summation_Y);
+  CorrelationCoefficient2.r_:=CorrelationCoefficient2.r_/Sqrt((((i+1)*CorrelationCoefficient2.Summation_X_power)-Math.Power(CorrelationCoefficient2.Summation_X,2))*(((i+1)*CorrelationCoefficient2.Summation_Y_power)-Math.Power(CorrelationCoefficient2.Summation_Y,2)));
+end;
+
 procedure TForm1.DisplayStatus();
 var
   i: integer;
@@ -586,6 +681,20 @@ begin
   Label_Sqrt_I1_S2.Caption:=' Sqrt( I1 * S1 )='+ CalFunction2.Sqrt_I1_S1.ToString;
   Label_Correlation1.Caption:='Correlation='+CalFunction2.Correlation_.ToString;
   Label_Correlation3.Caption:='Correlation2='+CalFunction2.Correlation2_.ToString;
+
+  Label_Source1_Summation_X.Caption:='Sum of X='+CorrelationCoefficient1.Summation_X.ToString;
+  Label_Source1_Summation_Y.Caption:='Sum of Y='+CorrelationCoefficient1.Summation_Y.ToString;
+  Label_Source1_Summation_X_Y.Caption:='Sum of X*Y='+CorrelationCoefficient1.Summation_X_Y.ToString;
+  Label_Source1_Summation_X_power.Caption:='Sum of X^2='+CorrelationCoefficient1.Summation_X_power.ToString;
+  Label_Source1_Summation_Y_power.Caption:='Sum of Y^2='+CorrelationCoefficient1.Summation_Y_power.ToString;
+  Label_Source1_r.Caption:='r='+CorrelationCoefficient1.r_.ToString;
+
+  Label_Source2_Summation_X.Caption:='Sum of X='+CorrelationCoefficient2.Summation_X.ToString;
+  Label_Source2_Summation_Y.Caption:='Sum of Y='+CorrelationCoefficient2.Summation_Y.ToString;
+  Label_Source2_Summation_X_Y.Caption:='Sum of X*Y='+CorrelationCoefficient2.Summation_X_Y.ToString;
+  Label_Source2_Summation_X_power.Caption:='Sum of X^2='+CorrelationCoefficient2.Summation_X_power.ToString;
+  Label_Source2_Summation_Y_power.Caption:='Sum of Y^2='+CorrelationCoefficient2.Summation_Y_power.ToString;
+  Label_Source2_r.Caption:='r='+CorrelationCoefficient2.r_.ToString;
 end;
 
 procedure TForm1.Source1_Up_To_TargetSource1(Loop_: integer);
