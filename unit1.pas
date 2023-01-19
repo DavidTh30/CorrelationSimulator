@@ -565,7 +565,7 @@ begin
   Label_U1.Caption:='U='+CalFunction2.U_.ToString;
   Label_I2.Caption:='I1='+CalFunction2.I1_.ToString;
   Label_S2.Caption:='S1='+CalFunction2.S1_.ToString;
-  Label_Sqrt_I1_S2.Caption:=' Sqrt( I1 + S1 )='+ CalFunction2.Sqrt_I1_S1.ToString;
+  Label_Sqrt_I1_S2.Caption:=' Sqrt( I1 * S1 )='+ CalFunction2.Sqrt_I1_S1.ToString;
   Label_Correlation1.Caption:='Correlation='+CalFunction2.Correlation_.ToString;
   Label_Correlation3.Caption:='Correlation2='+CalFunction2.Correlation2_.ToString;
 end;
