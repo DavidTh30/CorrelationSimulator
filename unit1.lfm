@@ -12,25 +12,25 @@ object Form1: TForm1
   Position = poWorkAreaCenter
   LCLVersion = '2.2.0.4'
   object Button1: TButton
-    Left = 448
+    Left = 432
     Height = 32
-    Top = 8
+    Top = 9
     Width = 83
     Caption = 'Start'
     OnClick = Button1Click
     TabOrder = 0
   end
   object Label_Serquent: TLabel
-    Left = 544
+    Left = 520
     Height = 15
-    Top = 7
+    Top = 6
     Width = 61
     Caption = 'Serquent=0'
   end
   object Label_Counter: TLabel
-    Left = 544
+    Left = 520
     Height = 15
-    Top = 25
+    Top = 24
     Width = 57
     Caption = 'Counter=0'
   end
@@ -315,6 +315,34 @@ object Form1: TForm1
         Width = 45
         Caption = 'Source 1'
       end
+      object Shape1: TShape
+        Left = 312
+        Height = 13
+        Top = 306
+        Width = 16
+        Brush.Color = clLime
+      end
+      object Label_Source1: TLabel
+        Left = 334
+        Height = 15
+        Top = 304
+        Width = 50
+        Caption = '=Source1'
+      end
+      object Shape2: TShape
+        Left = 312
+        Height = 13
+        Top = 324
+        Width = 16
+        Brush.Color = clRed
+      end
+      object Label_Source2: TLabel
+        Left = 334
+        Height = 15
+        Top = 321
+        Width = 50
+        Caption = '=Source2'
+      end
     end
   end
   object PageControl2: TPageControl
@@ -448,6 +476,34 @@ object Form1: TForm1
         Width = 165
         Caption = 'Correlation2=(Correlation^2)/2'
       end
+      object Shape3: TShape
+        Left = 296
+        Height = 13
+        Top = 10
+        Width = 16
+        Brush.Color = clLime
+      end
+      object Label_Source3: TLabel
+        Left = 314
+        Height = 15
+        Top = 8
+        Width = 50
+        Caption = '=Source1'
+      end
+      object Shape4: TShape
+        Left = 296
+        Height = 13
+        Top = 28
+        Width = 16
+        Brush.Color = clRed
+      end
+      object Label_Source4: TLabel
+        Left = 314
+        Height = 15
+        Top = 25
+        Width = 50
+        Caption = '=Source2'
+      end
     end
     object TabSheet_Equation02: TTabSheet
       Caption = 'Equation02'
@@ -571,6 +627,34 @@ object Form1: TForm1
         Top = 288
         Width = 165
         Caption = 'Correlation2=(Correlation^2)/2'
+      end
+      object Shape5: TShape
+        Left = 296
+        Height = 13
+        Top = 10
+        Width = 16
+        Brush.Color = clLime
+      end
+      object Label_Source5: TLabel
+        Left = 314
+        Height = 15
+        Top = 8
+        Width = 50
+        Caption = '=Source1'
+      end
+      object Shape6: TShape
+        Left = 296
+        Height = 13
+        Top = 28
+        Width = 16
+        Brush.Color = clRed
+      end
+      object Label_Source6: TLabel
+        Left = 314
+        Height = 15
+        Top = 25
+        Width = 50
+        Caption = '=Source2'
       end
     end
   end
