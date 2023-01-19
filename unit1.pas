@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  ComCtrls, TAGraph, TASources, TASeries;
+  ComCtrls, TAGraph, TASources, TASeries, Math;
 
 type
 
@@ -20,17 +20,24 @@ type
     Chart6LineSeries2: TLineSeries;
     Label1: TLabel;
     Label2: TLabel;
+    Label_Correlation_: TLabel;
+    Label_Correlation: TLabel;
+    Label_CloseOrderPriceSource1: TLabel;
+    Label_CloseOrderPriceSource2: TLabel;
+    Label_Dif_Source1_AvgSource1: TLabel;
+    Label_Dif_Source2_AvgSource2: TLabel;
+    Label_I1_: TLabel;
+    Label_S1_: TLabel;
+    Label_U: TLabel;
+    Label_I1: TLabel;
+    Label_S1: TLabel;
     Label_Serquent: TLabel;
     Label_Counter: TLabel;
     Label_AvgSource1: TLabel;
     Label_AvgSource2: TLabel;
-    _Source1_: TListChartSource;
-    _Base_: TListChartSource;
-    _Source2_: TListChartSource;
-    PageControl1: TPageControl;
+    Label_U_: TLabel;
     Source1_1: TEdit;
     Source1_10: TEdit;
-    Source2_1: TEdit;
     Source1_2: TEdit;
     Source1_3: TEdit;
     Source1_4: TEdit;
@@ -39,6 +46,7 @@ type
     Source1_7: TEdit;
     Source1_8: TEdit;
     Source1_9: TEdit;
+    Source2_1: TEdit;
     Source2_10: TEdit;
     Source2_2: TEdit;
     Source2_3: TEdit;
@@ -48,12 +56,17 @@ type
     Source2_7: TEdit;
     Source2_8: TEdit;
     Source2_9: TEdit;
+    _Source1_: TListChartSource;
+    _Base_: TListChartSource;
+    _Source2_: TListChartSource;
+    PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     Timer1: TTimer;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure Cal_();
     procedure DisplayStatus();
     procedure Source1_Up_To_TargetSource1(Loop_: integer);
     procedure Source1_Down_To_Base(Loop_: integer);
@@ -83,6 +96,14 @@ var
   Serquent_:integer;
   AvgSource1_:double;
   AvgSource2_:double;
+  CloseOrderPriceSource1:double;
+  CloseOrderPriceSource2:double;
+  Dif_Source1_AvgSource1:double;
+  Dif_Source2_AvgSource2:double;
+  U_:double;
+  I1_:double;
+  S1_:Double;
+  Correlation_:double;
 
 implementation
 
@@ -109,6 +130,15 @@ begin
   Serquent_:=0;
   AvgSource1_:=0;
   AvgSource2_:=0;
+
+  CloseOrderPriceSource1:=0;
+  CloseOrderPriceSource2:=0;
+  Dif_Source1_AvgSource1:=0;
+  Dif_Source2_AvgSource2:=0;
+  U_:=0;
+  I1_:=0;
+  S1_:=0;
+  Correlation_:=0;
 
   TotalBase:=0;
   for i:=0 to 9 do
@@ -182,6 +212,8 @@ begin
     _Base_.Add(i,Base_[i] );
     _Source2_.Add(i,Base_[i] );
   end;
+
+  Cal_();
   DisplayStatus();
   //Chart6.LeftAxis.Range.UseMax:=True;
   //Chart6.LeftAxis.Range.UseMin:=True;
@@ -342,6 +374,7 @@ begin
     Application.ProcessMessages;
   end;
 
+  Cal_();
   DisplayStatus();
 end;
 
@@ -353,13 +386,10 @@ begin
   if Not Timer1.Enabled then Button1.Caption:='Start';
 end;
 
-procedure TForm1.DisplayStatus();
+procedure TForm1.Cal_();
 var
   i: integer;
 begin
-  Label_Serquent.Caption:='Serquent='+Serquent_.ToString;
-  Label_Counter.Caption:='Counter='+Counter_.ToString;
-
   AvgSource1_:=0;
   for i:=0 to 9 do
   begin
@@ -373,6 +403,24 @@ begin
     AvgSource2_:=AvgSource2_+CurrentSource2[i];
   end;
   AvgSource2_:=AvgSource2_/10;
+
+
+  CloseOrderPriceSource1:=CurrentSource1[9];
+  CloseOrderPriceSource2:=CurrentSource2[9];
+  Dif_Source1_AvgSource1:=CloseOrderPriceSource1-AvgSource1_;
+  Dif_Source2_AvgSource2:=CloseOrderPriceSource2-AvgSource2_;
+  U_:=Dif_Source1_AvgSource1*Dif_Source2_AvgSource2;
+  I1_:=Math.Power(CloseOrderPriceSource1,2);
+  S1_:=Math.Power(CloseOrderPriceSource2,2);
+  Correlation_:=U_/Sqrt(I1_*S1_);
+end;
+
+procedure TForm1.DisplayStatus();
+var
+  i: integer;
+begin
+  Label_Serquent.Caption:='Serquent='+Serquent_.ToString;
+  Label_Counter.Caption:='Counter='+Counter_.ToString;
 
   Label_AvgSource1.Caption:='AvgSource1='+AvgSource1_.ToString;
   Label_AvgSource2.Caption:='AvgSource2='+AvgSource2_.ToString;
@@ -408,6 +456,15 @@ begin
     _Source2_.SetXValue(i,i);
     _Source2_.SetYValue(i,CurrentSource2[i]);
   end;
+
+  Label_CloseOrderPriceSource1.Caption:='CloseOrderPriceSource1='+CloseOrderPriceSource1.ToString;
+  Label_CloseOrderPriceSource2.Caption:='CloseOrderPriceSource2='+CloseOrderPriceSource2.ToString;
+  Label_Dif_Source1_AvgSource1.Caption:='Source1-AvgSource1='+Dif_Source1_AvgSource1.ToString;
+  Label_Dif_Source2_AvgSource2.Caption:='Source2-AvgSource2='+Dif_Source2_AvgSource2.ToString;
+  Label_U.Caption:='U='+U_.ToString;
+  Label_I1.Caption:='I1='+I1_.ToString;
+  Label_S1.Caption:='S1='+S1_.ToString;
+  Label_Correlation.Caption:='Correlation='+Correlation_.ToString;
 end;
 
 procedure TForm1.Source1_Up_To_TargetSource1(Loop_: integer);
