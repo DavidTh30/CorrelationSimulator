@@ -350,8 +350,8 @@ object Form1: TForm1
     Height = 392
     Top = 56
     Width = 376
-    ActivePage = TabSheet_Correlation_Coefficient_of_Source_2
-    TabIndex = 3
+    ActivePage = TabSheet_Correlation_Coefficient_of_Source_1
+    TabIndex = 2
     TabOrder = 2
     object TabSheet_Equation01: TTabSheet
       Caption = 'Equation01'
