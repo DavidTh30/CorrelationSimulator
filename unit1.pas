@@ -362,7 +362,7 @@ begin
   StandardErrorOfTheMean1.Avg_Xbar_Mean:=StandardErrorOfTheMean1.Avg_Xbar_Mean/TotalPointerX;
   for i:=0 to TotalPointerX-1 do
   begin
-    StandardErrorOfTheMean1.Standard_S:= Math.Power(CurrentSource1[i]+StandardErrorOfTheMean1.Avg_Xbar_Mean,2)
+    StandardErrorOfTheMean1.Standard_S:= Math.Power(CurrentSource1[i]-StandardErrorOfTheMean1.Avg_Xbar_Mean,2)
   end;
   StandardErrorOfTheMean1.Standard_S:=Sqrt(StandardErrorOfTheMean1.Standard_S/(TotalPointerX-1));
   StandardErrorOfTheMean1.StandardError:=StandardErrorOfTheMean1.Standard_S/Sqrt(TotalPointerX);
@@ -375,7 +375,7 @@ begin
   StandardErrorOfTheMean2.Avg_Xbar_Mean:=StandardErrorOfTheMean2.Avg_Xbar_Mean/TotalPointerX;
   for i:=0 to TotalPointerX-1 do
   begin
-    StandardErrorOfTheMean2.Standard_S:= Math.Power(CurrentSource2[i]+StandardErrorOfTheMean2.Avg_Xbar_Mean,2)
+    StandardErrorOfTheMean2.Standard_S:= Math.Power(CurrentSource2[i]-StandardErrorOfTheMean2.Avg_Xbar_Mean,2)
   end;
   StandardErrorOfTheMean2.Standard_S:=Sqrt(StandardErrorOfTheMean2.Standard_S/(TotalPointerX-1));
   StandardErrorOfTheMean2.StandardError:=StandardErrorOfTheMean2.Standard_S/Sqrt(TotalPointerX);
