@@ -10,22 +10,23 @@ object Form1: TForm1
   ClientWidth = 822
   OnCreate = FormCreate
   Position = poWorkAreaCenter
-  LCLVersion = '2.2.0.4'
-  object Button1: TButton
+  LCLVersion = '2.2.2.0'
+  object Button_Start: TButton
     Left = 432
     Height = 32
     Top = 9
     Width = 83
     Caption = 'Start'
-    OnClick = Button1Click
+    OnClick = Button_StartClick
     TabOrder = 0
   end
   object Label_Serquent: TLabel
     Left = 520
     Height = 15
-    Top = 6
+    Top = 8
     Width = 61
     Caption = 'Serquent=0'
+    ParentColor = False
   end
   object Label_Counter: TLabel
     Left = 520
@@ -33,6 +34,7 @@ object Form1: TForm1
     Top = 24
     Width = 57
     Caption = 'Counter=0'
+    ParentColor = False
   end
   object PageControl1: TPageControl
     Left = 8
@@ -127,6 +129,7 @@ object Form1: TForm1
         Top = 16
         Width = 45
         Caption = 'Source 2'
+        ParentColor = False
       end
       object Source1_1: TEdit
         Left = 40
@@ -314,6 +317,7 @@ object Form1: TForm1
         Top = 16
         Width = 45
         Caption = 'Source 1'
+        ParentColor = False
       end
       object Shape1: TShape
         Left = 312
@@ -328,6 +332,7 @@ object Form1: TForm1
         Top = 304
         Width = 50
         Caption = '=Source1'
+        ParentColor = False
       end
       object Shape2: TShape
         Left = 312
@@ -342,6 +347,7 @@ object Form1: TForm1
         Top = 321
         Width = 50
         Caption = '=Source2'
+        ParentColor = False
       end
     end
   end
@@ -363,6 +369,7 @@ object Form1: TForm1
         Top = 8
         Width = 77
         Caption = 'AvgSource1=0'
+        ParentColor = False
       end
       object Label_AvgSource2: TLabel
         Left = 8
@@ -370,6 +377,7 @@ object Form1: TForm1
         Top = 32
         Width = 77
         Caption = 'AvgSource2=0'
+        ParentColor = False
       end
       object Label_CloseOrderPriceSource1: TLabel
         Left = 8
@@ -377,6 +385,7 @@ object Form1: TForm1
         Top = 60
         Width = 141
         Caption = 'CloseOrderPriceSource1=0'
+        ParentColor = False
       end
       object Label_CloseOrderPriceSource2: TLabel
         Left = 8
@@ -384,6 +393,7 @@ object Form1: TForm1
         Top = 80
         Width = 141
         Caption = 'CloseOrderPriceSource2=0'
+        ParentColor = False
       end
       object Label_Dif_Source1_AvgSource1: TLabel
         Left = 8
@@ -391,6 +401,7 @@ object Form1: TForm1
         Top = 104
         Width = 124
         Caption = 'Source1-AvgSource1=0'
+        ParentColor = False
       end
       object Label_Dif_Source2_AvgSource2: TLabel
         Left = 8
@@ -398,6 +409,7 @@ object Form1: TForm1
         Top = 120
         Width = 124
         Caption = 'Source2-AvgSource2=0'
+        ParentColor = False
       end
       object Label_U: TLabel
         Left = 8
@@ -405,6 +417,7 @@ object Form1: TForm1
         Top = 160
         Width = 22
         Caption = 'U=0'
+        ParentColor = False
       end
       object Label_I1: TLabel
         Left = 8
@@ -412,6 +425,7 @@ object Form1: TForm1
         Top = 192
         Width = 23
         Caption = 'I1=0'
+        ParentColor = False
       end
       object Label_S1: TLabel
         Left = 8
@@ -419,6 +433,7 @@ object Form1: TForm1
         Top = 224
         Width = 26
         Caption = 'S1=0'
+        ParentColor = False
       end
       object Label_Correlation_: TLabel
         Left = 8
@@ -426,6 +441,7 @@ object Form1: TForm1
         Top = 256
         Width = 156
         Caption = 'Correlation=U / Sqrt( I1 + S1 )'
+        ParentColor = False
       end
       object Label_U_: TLabel
         Left = 8
@@ -433,6 +449,7 @@ object Form1: TForm1
         Top = 144
         Width = 260
         Caption = 'U=(Source1-AvgSource1)+(Source2-AvgSource2)'
+        ParentColor = False
       end
       object Label_I1_: TLabel
         Left = 8
@@ -440,6 +457,7 @@ object Form1: TForm1
         Top = 176
         Width = 158
         Caption = 'I1=CloseOrderPriceSource1^2'
+        ParentColor = False
       end
       object Label_S1_: TLabel
         Left = 8
@@ -447,6 +465,7 @@ object Form1: TForm1
         Top = 208
         Width = 161
         Caption = 'S1=CloseOrderPriceSource2^2'
+        ParentColor = False
       end
       object Label_Correlation: TLabel
         Left = 8
@@ -454,6 +473,7 @@ object Form1: TForm1
         Top = 272
         Width = 73
         Caption = 'Correlation=0'
+        ParentColor = False
       end
       object Label_Sqrt_I1_S1: TLabel
         Left = 8
@@ -461,6 +481,7 @@ object Form1: TForm1
         Top = 240
         Width = 87
         Caption = ' Sqrt( I1 + S1 )=0'
+        ParentColor = False
       end
       object Label_Correlation2: TLabel
         Left = 8
@@ -468,6 +489,7 @@ object Form1: TForm1
         Top = 304
         Width = 79
         Caption = 'Correlation2=0'
+        ParentColor = False
       end
       object Label_Correlation2__: TLabel
         Left = 8
@@ -475,6 +497,7 @@ object Form1: TForm1
         Top = 288
         Width = 165
         Caption = 'Correlation2=(Correlation^2)/2'
+        ParentColor = False
       end
       object Shape3: TShape
         Left = 296
@@ -489,6 +512,7 @@ object Form1: TForm1
         Top = 8
         Width = 50
         Caption = '=Source1'
+        ParentColor = False
       end
       object Shape4: TShape
         Left = 296
@@ -503,6 +527,7 @@ object Form1: TForm1
         Top = 25
         Width = 50
         Caption = '=Source2'
+        ParentColor = False
       end
     end
     object TabSheet_Equation02: TTabSheet
@@ -515,6 +540,7 @@ object Form1: TForm1
         Top = 8
         Width = 77
         Caption = 'AvgSource1=0'
+        ParentColor = False
       end
       object Label_AvgSource4: TLabel
         Left = 8
@@ -522,6 +548,7 @@ object Form1: TForm1
         Top = 32
         Width = 77
         Caption = 'AvgSource2=0'
+        ParentColor = False
       end
       object Label_CloseOrderPriceSource3: TLabel
         Left = 8
@@ -529,6 +556,7 @@ object Form1: TForm1
         Top = 60
         Width = 141
         Caption = 'CloseOrderPriceSource1=0'
+        ParentColor = False
       end
       object Label_CloseOrderPriceSource4: TLabel
         Left = 8
@@ -536,6 +564,7 @@ object Form1: TForm1
         Top = 80
         Width = 141
         Caption = 'CloseOrderPriceSource2=0'
+        ParentColor = False
       end
       object Label_Dif_Source1_AvgSource2: TLabel
         Left = 8
@@ -543,6 +572,7 @@ object Form1: TForm1
         Top = 104
         Width = 124
         Caption = 'Source1-AvgSource1=0'
+        ParentColor = False
       end
       object Label_Dif_Source2_AvgSource3: TLabel
         Left = 8
@@ -550,6 +580,7 @@ object Form1: TForm1
         Top = 120
         Width = 124
         Caption = 'Source2-AvgSource2=0'
+        ParentColor = False
       end
       object Label_U1: TLabel
         Left = 8
@@ -557,6 +588,7 @@ object Form1: TForm1
         Top = 160
         Width = 22
         Caption = 'U=0'
+        ParentColor = False
       end
       object Label_I2: TLabel
         Left = 8
@@ -564,6 +596,7 @@ object Form1: TForm1
         Top = 192
         Width = 23
         Caption = 'I1=0'
+        ParentColor = False
       end
       object Label_S2: TLabel
         Left = 8
@@ -571,6 +604,7 @@ object Form1: TForm1
         Top = 224
         Width = 26
         Caption = 'S1=0'
+        ParentColor = False
       end
       object Label_Correlation_1: TLabel
         Left = 8
@@ -578,6 +612,7 @@ object Form1: TForm1
         Top = 256
         Width = 153
         Caption = 'Correlation=U / Sqrt( I1 * S1 )'
+        ParentColor = False
       end
       object Label_U_1: TLabel
         Left = 8
@@ -585,6 +620,7 @@ object Form1: TForm1
         Top = 144
         Width = 257
         Caption = 'U=(Source1-AvgSource1)*(Source2-AvgSource2)'
+        ParentColor = False
       end
       object Label_I1_1: TLabel
         Left = 8
@@ -592,6 +628,7 @@ object Form1: TForm1
         Top = 176
         Width = 158
         Caption = 'I1=CloseOrderPriceSource1^2'
+        ParentColor = False
       end
       object Label_S1_1: TLabel
         Left = 8
@@ -599,6 +636,7 @@ object Form1: TForm1
         Top = 208
         Width = 161
         Caption = 'S1=CloseOrderPriceSource2^2'
+        ParentColor = False
       end
       object Label_Correlation1: TLabel
         Left = 8
@@ -606,6 +644,7 @@ object Form1: TForm1
         Top = 272
         Width = 73
         Caption = 'Correlation=0'
+        ParentColor = False
       end
       object Label_Sqrt_I1_S2: TLabel
         Left = 8
@@ -613,6 +652,7 @@ object Form1: TForm1
         Top = 240
         Width = 84
         Caption = ' Sqrt( I1 * S1 )=0'
+        ParentColor = False
       end
       object Label_Correlation3: TLabel
         Left = 8
@@ -620,6 +660,7 @@ object Form1: TForm1
         Top = 304
         Width = 79
         Caption = 'Correlation2=0'
+        ParentColor = False
       end
       object Label_Correlation2__1: TLabel
         Left = 8
@@ -627,6 +668,7 @@ object Form1: TForm1
         Top = 288
         Width = 165
         Caption = 'Correlation2=(Correlation^2)/2'
+        ParentColor = False
       end
       object Shape5: TShape
         Left = 296
@@ -641,6 +683,7 @@ object Form1: TForm1
         Top = 8
         Width = 50
         Caption = '=Source1'
+        ParentColor = False
       end
       object Shape6: TShape
         Left = 296
@@ -655,6 +698,7 @@ object Form1: TForm1
         Top = 25
         Width = 50
         Caption = '=Source2'
+        ParentColor = False
       end
     end
     object TabSheet_Correlation_Coefficient_of_Source_1: TTabSheet
@@ -667,6 +711,7 @@ object Form1: TForm1
         Top = 8
         Width = 182
         Caption = 'Correlation Coefficient of Source 1'
+        ParentColor = False
       end
       object Label_Source1_Summation_X: TLabel
         Left = 8
@@ -674,6 +719,7 @@ object Form1: TForm1
         Top = 104
         Width = 62
         Caption = 'Sum of X=0'
+        ParentColor = False
       end
       object Label_Source1_Summation_Y: TLabel
         Left = 8
@@ -681,6 +727,7 @@ object Form1: TForm1
         Top = 128
         Width = 62
         Caption = 'Sum of Y=0'
+        ParentColor = False
       end
       object Label_Source1_Summation_X_power: TLabel
         Left = 8
@@ -688,6 +735,7 @@ object Form1: TForm1
         Top = 176
         Width = 76
         Caption = 'Sum of X^2=0'
+        ParentColor = False
       end
       object Label_Source1_Summation_Y_power: TLabel
         Left = 8
@@ -695,6 +743,7 @@ object Form1: TForm1
         Top = 200
         Width = 76
         Caption = 'Sum of Y^2=0'
+        ParentColor = False
       end
       object Label_Source1_Summation_X_Y: TLabel
         Left = 8
@@ -702,6 +751,7 @@ object Form1: TForm1
         Top = 152
         Width = 74
         Caption = 'Sum of X*Y=0'
+        ParentColor = False
       end
       object Image_Correlation_Coefficient_of_Source_1: TImage
         Left = 24
@@ -1689,6 +1739,7 @@ object Form1: TForm1
         Top = 224
         Width = 18
         Caption = 'r=0'
+        ParentColor = False
       end
       object Shape7: TShape
         Left = 296
@@ -1703,6 +1754,7 @@ object Form1: TForm1
         Top = 8
         Width = 50
         Caption = '=Source1'
+        ParentColor = False
       end
     end
     object TabSheet_Correlation_Coefficient_of_Source_2: TTabSheet
@@ -1715,6 +1767,7 @@ object Form1: TForm1
         Top = 8
         Width = 182
         Caption = 'Correlation Coefficient of Source 2'
+        ParentColor = False
       end
       object Label_Source2_Summation_X: TLabel
         Left = 8
@@ -1722,6 +1775,7 @@ object Form1: TForm1
         Top = 104
         Width = 62
         Caption = 'Sum of X=0'
+        ParentColor = False
       end
       object Label_Source2_Summation_Y: TLabel
         Left = 8
@@ -1729,6 +1783,7 @@ object Form1: TForm1
         Top = 128
         Width = 62
         Caption = 'Sum of Y=0'
+        ParentColor = False
       end
       object Label_Source2_Summation_X_power: TLabel
         Left = 8
@@ -1736,6 +1791,7 @@ object Form1: TForm1
         Top = 176
         Width = 76
         Caption = 'Sum of X^2=0'
+        ParentColor = False
       end
       object Label_Source2_Summation_Y_power: TLabel
         Left = 8
@@ -1743,6 +1799,7 @@ object Form1: TForm1
         Top = 200
         Width = 76
         Caption = 'Sum of Y^2=0'
+        ParentColor = False
       end
       object Label_Source2_Summation_X_Y: TLabel
         Left = 8
@@ -1750,6 +1807,7 @@ object Form1: TForm1
         Top = 152
         Width = 74
         Caption = 'Sum of X*Y=0'
+        ParentColor = False
       end
       object Image_Correlation_Coefficient_of_Source_2: TImage
         Left = 24
@@ -2737,6 +2795,7 @@ object Form1: TForm1
         Top = 224
         Width = 18
         Caption = 'r=0'
+        ParentColor = False
       end
       object Shape8: TShape
         Left = 296
@@ -2751,6 +2810,7 @@ object Form1: TForm1
         Top = 8
         Width = 50
         Caption = '=Source2'
+        ParentColor = False
       end
     end
     object TabSheet_StandardErrorOfTheMean: TTabSheet
@@ -2761,8 +2821,9 @@ object Form1: TForm1
         Left = 8
         Height = 15
         Top = 8
-        Width = 146
+        Width = 147
         Caption = 'Standard Error Of The Mean'
+        ParentColor = False
       end
       object Label_Source1_Avg_Xbar_Mean: TLabel
         Left = 16
@@ -2770,6 +2831,7 @@ object Form1: TForm1
         Top = 224
         Width = 146
         Caption = 'Source1_Avg_Xbar_Mean=0'
+        ParentColor = False
       end
       object Label_Source1_Standard_S: TLabel
         Left = 16
@@ -2777,6 +2839,7 @@ object Form1: TForm1
         Top = 240
         Width = 119
         Caption = 'Source1_Standard_S=0'
+        ParentColor = False
       end
       object Label_Source1_StandardError: TLabel
         Left = 16
@@ -2784,6 +2847,7 @@ object Form1: TForm1
         Top = 256
         Width = 133
         Caption = 'Source1_StandardError=0'
+        ParentColor = False
       end
       object Label_Source2_Avg_Xbar_Mean: TLabel
         Left = 16
@@ -2791,6 +2855,7 @@ object Form1: TForm1
         Top = 288
         Width = 146
         Caption = 'Source2_Avg_Xbar_Mean=0'
+        ParentColor = False
       end
       object Label_Source2_Standard_S: TLabel
         Left = 16
@@ -2798,6 +2863,7 @@ object Form1: TForm1
         Top = 304
         Width = 119
         Caption = 'Source2_Standard_S=0'
+        ParentColor = False
       end
       object Label_Source2_StandardError: TLabel
         Left = 16
@@ -2805,6 +2871,7 @@ object Form1: TForm1
         Top = 320
         Width = 133
         Caption = 'Source2_StandardError=0'
+        ParentColor = False
       end
       object Image_Standard_Deviation: TImage
         Left = 8
