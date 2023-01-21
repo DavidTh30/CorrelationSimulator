@@ -13,7 +13,7 @@ type
   { TForm1 }
 
   TForm1 = class(TForm)
-    Button1: TButton;
+    Button_Start: TButton;
     Chart2LineSeries1: TLineSeries;
     Chart6: TChart;
     Chart6LineSeries1: TLineSeries;
@@ -130,7 +130,7 @@ type
     TTabSheet_Database: TTabSheet;
     TTabSheet_Chart: TTabSheet;
     Timer1: TTimer;
-    procedure Button1Click(Sender: TObject);
+    procedure Button_StartClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure Cal_StandardErrorOfTheMean();
@@ -342,12 +342,12 @@ begin
   //Chart6.LeftAxis.Range.UseMin:=True;
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
+procedure TForm1.Button_StartClick(Sender: TObject);
 begin
   Timer1.Enabled:= not Timer1.Enabled;
 
-  if Timer1.Enabled then Button1.Caption:='Stop';
-  if Not Timer1.Enabled then Button1.Caption:='Start';
+  if Timer1.Enabled then Button_Start.Caption:='Stop';
+  if Not Timer1.Enabled then Button_Start.Caption:='Start';
 end;
 
 procedure TForm1.Cal_StandardErrorOfTheMean();
